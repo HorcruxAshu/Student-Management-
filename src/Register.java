@@ -52,6 +52,13 @@ public class Register extends javax.swing.JFrame {
            }
         
     }
+    boolean validate(String name, String usr, String psword, String cpass, String course){
+        if(name.trim().isEmpty() || usr.trim().isEmpty() || psword.trim().isEmpty() || cpass.trim().isEmpty() || course.trim().isEmpty()){
+            return true;
+        }
+        return false;
+        
+    }
     void addData(String name, String usr, String psword, String cpass, String course){
            try {
                RandomAccessFile raf = new RandomAccessFile(f + "\\data.txt", "rw");
@@ -59,13 +66,13 @@ public class Register extends javax.swing.JFrame {
                    raf.readLine();
                }
                
-               raf.writeBytes("{Name:" + name + ", " );
-               raf.writeBytes("Username:" + usr + ", " );
-               raf.writeBytes("Password:" + psword  + ", " );
+               raf.writeBytes( name + ", " );
+               raf.writeBytes(usr + ", " );
+               raf.writeBytes(psword  + ", " );
 //               raf.writeBytes("ConfirmPass:" + cpass  + ", " );
-               raf.writeBytes("Course:" + course + "}");
+               raf.writeBytes( course);
                raf.writeBytes("\r\n");
-               raf.writeBytes("\r\n");
+               
                
                
                
@@ -153,6 +160,7 @@ public class Register extends javax.swing.JFrame {
         CPasswords = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
+        BackL = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -221,6 +229,13 @@ public class Register extends javax.swing.JFrame {
 
         jLabel8.setText("Class");
 
+        BackL.setText("Back");
+        BackL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackLActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -237,7 +252,9 @@ public class Register extends javax.swing.JFrame {
                                 .addGap(86, 86, 86)
                                 .addComponent(jButton1)
                                 .addGap(40, 40, 40)
-                                .addComponent(jButton2))
+                                .addComponent(jButton2)
+                                .addGap(37, 37, 37)
+                                .addComponent(BackL))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -252,7 +269,7 @@ public class Register extends javax.swing.JFrame {
                                     .addComponent(Usernames, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Names, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,7 +299,8 @@ public class Register extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(BackL))
                 .addGap(38, 38, 38))
         );
 
@@ -294,10 +312,40 @@ public class Register extends javax.swing.JFrame {
             createfolder();
             readFile();
             countLines();
-            addData(Names.getText(),Usernames.getText(), Passwords.getText(), CPasswords.getText(), jComboBox1.getSelectedItem().toString());
-            login r1 = new login();
-            r1.setVisible(true);
-            this.dispose();
+            
+            if(validate(Names.getText(),Usernames.getText(), Passwords.getText(), CPasswords.getText(), jComboBox1.getSelectedItem().toString())){
+                if(Names.getText().trim().isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Please fill Name!");
+                }else if(Usernames.getText().trim().isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Please fill Username!");
+                }else if(Passwords.getText().trim().isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Please fill Password!");
+                }else if(CPasswords.getText().trim().isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Please confirm your password!");
+                }else {
+                    JOptionPane.showMessageDialog(null, "Please fill all fields correctly!");
+                }
+                
+                
+                
+                
+            }else if(!validate(Names.getText(),Usernames.getText(), Passwords.getText(), CPasswords.getText(), jComboBox1.getSelectedItem().toString())){           
+                if(!"Select Class".equals(jComboBox1.getSelectedItem().toString())){
+                    if(Passwords.getText().equals(CPasswords.getText())){
+                        addData(Names.getText(),Usernames.getText(), Passwords.getText(), CPasswords.getText(), jComboBox1.getSelectedItem().toString());
+                        login r1 = new login();
+                        r1.setVisible(true);
+                        this.dispose();
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Passwords don't match");
+                    }
+                    
+                }else{
+                    JOptionPane.showMessageDialog(null, "Please select class!");
+                }
+                
+            }
+            
             
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -337,6 +385,13 @@ public class Register extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordsActionPerformed
 
+    private void BackLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackLActionPerformed
+        // TODO add your handling code here:
+        login lgn = new login();
+        lgn.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BackLActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -373,6 +428,7 @@ public class Register extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackL;
     private javax.swing.JTextField CPasswords;
     private javax.swing.JTextField Names;
     private javax.swing.JTextField Passwords;

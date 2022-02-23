@@ -52,7 +52,7 @@ public class Register extends javax.swing.JFrame {
         }
 
         if(!password.equals(confPassword)){
-            JOptionPane.showMessageDialog(null, "Password and Confirm Password does not match!");
+            JOptionPane.showMessageDialog(null, "Password and Confirm Password do not match!");
             return false;
         }
         return true;

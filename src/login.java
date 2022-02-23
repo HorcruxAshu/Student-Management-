@@ -1,11 +1,13 @@
 
 import common.Constants;
+import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,7 +17,7 @@ import pojo.LoginData;
 
 public class login extends JFrame {
 
-    // Variables declaration - do not modify
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -28,6 +30,7 @@ public class login extends JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField tfps;
     private javax.swing.JTextField tfus;
+    // End of variables declaration//GEN-END:variables
 
     String Username, Password;
     int ln;
@@ -37,27 +40,6 @@ public class login extends JFrame {
      **/
     public login() {
         initComponents();
-    }
-
-    void checkData(String usr, String psword){
-           try {
-               RandomAccessFile raf = new RandomAccessFile(Constants.LOGIN_DATA, "rw");
-               String lines = raf.readLine();
-               Username = lines.substring(9);
-               Password = raf.readLine().substring(9);
-              
-               
-               if(usr.equals(Username) & psword.equals(Password)){
-                   JOptionPane.showMessageDialog(null, "Password Matched!");
-               }else{
-                   JOptionPane.showMessageDialog(null, "Wrong user/password");
-               }
-               
-           } catch (FileNotFoundException ex) {
-               Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-           } catch (IOException ex) {
-               Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-           }
     }
 
     /**
@@ -221,8 +203,8 @@ public class login extends JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfusActionPerformed(java.awt.event.ActionEvent evt) {
-    }
+    private void tfusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfusActionPerformed
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void clearFields(){
         tfus.setText("");
@@ -230,31 +212,33 @@ public class login extends JFrame {
     }
 
     // clear button action listerner
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_jButton3ActionPerformed
         clearFields();
-    }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private boolean validateCredentials(String username, String password){
         List<LoginData> allCreds = LoginData.getAllCredentials();
+        HashMap<String, String> loginMap = new HashMap<>();
         for(LoginData data : allCreds) {
-            if(data.getUserName().equals(username)){
-                if(data.getPassword().equals(password)){
-                    return true;
-                }
-                else {
-                    JOptionPane.showMessageDialog(null, "Invalid userName and password");
-                    return false;
-                }
+            loginMap.put(data.getUserName(), data.getPassword());
+        }
+
+        if(loginMap.containsKey(username)) {
+            if (loginMap.get(username).equals(password)) {
+                return true;
             } else {
-                JOptionPane.showMessageDialog(null, "Username is not registered in the system!");
+                JOptionPane.showMessageDialog(null, "Invalid userName and password");
                 return false;
             }
         }
-        return false;
+        else {
+            JOptionPane.showMessageDialog(null, "Username is not registered in the system!");
+            return false;
+        }
     }
 
     // login button action listerner
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if(validateCredentials(tfus.getText(), tfps.getText())){
             Menu menu = new Menu();
             menu.setVisible(true);
@@ -263,17 +247,17 @@ public class login extends JFrame {
         }
         clearFields();
         return;
-    }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void tfpsActionPerformed(java.awt.event.ActionEvent evt) {
-    }
+    private void tfpsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfpsActionPerformed
+    }//GEN-LAST:event_tfpsActionPerformed
 
     // register button action listerner
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
             Register r1 = new Register();
             r1.setVisible(true);
             this.dispose();
-    }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

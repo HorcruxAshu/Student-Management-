@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 import pojo.LoginData;
 
 public class Register extends javax.swing.JFrame {
-    // Variables declaration
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackL;
     private javax.swing.JTextField CPasswords;
     private javax.swing.JTextField Names;
@@ -25,6 +25,7 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
+    // End of variables declaration//GEN-END:variables
 
     String selectedClass =  "";
     int ln;
@@ -243,7 +244,7 @@ public class Register extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String name = Names.getText().trim();
         if(!isValidName(name)){
             return;
@@ -283,29 +284,29 @@ public class Register extends javax.swing.JFrame {
         r1.setVisible(true);
         this.dispose();
 
-    }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         selectedClass = jComboBox1.getSelectedItem().toString();
-    }
+    }//GEN-LAST:event_jjComboBox1ActionPerformed
 
-    private void NamesActionPerformed(java.awt.event.ActionEvent evt) {
-    }
+    private void NamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamesActionPerformed
+    }//GEN-LAST:event_NamesActionPerformed
 
-    private void CPasswordsActionPerformed(java.awt.event.ActionEvent evt) {
-    }
+    private void CPasswordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPasswordsActionPerformed
+    }//GEN-LAST:event_CPasswordsActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         CPasswords.setText("");
         Names.setText("");
         Usernames.setText("");
         Passwords.setText("");
         selectedClass = "";
-    }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void UsernamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernamesActionPerformed
 
-    }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void PasswordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordsActionPerformed
         // TODO add your handling code here:

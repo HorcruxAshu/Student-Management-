@@ -359,6 +359,7 @@ public class Register extends javax.swing.JFrame {
 
     private void NamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamesActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_NamesActionPerformed
 
     private void CPasswordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPasswordsActionPerformed

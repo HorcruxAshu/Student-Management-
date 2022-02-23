@@ -1,69 +1,49 @@
 
+import common.Constants;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import pojo.LoginData;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+public class login extends JFrame {
 
-/**
- *
- * @author DM
- */
-public class login extends javax.swing.JFrame {
-       File f = new File("C:\\Netbeans Project");
-//       
-       String Username, Password;
-//       
-       int ln;
+    // Variables declaration - do not modify
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JFrame jFrame1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField tfps;
+    private javax.swing.JTextField tfus;
+
+    String Username, Password;
+    int ln;
+
     /**
      * Creates new form login
-     */
-       
-       
-       
+     **/
     public login() {
         initComponents();
     }
-    
-    
-    
-//    void addData(String usr, String psword){
-//           try {
-//               RandomAccessFile raf = new RandomAccessFile(f + "\\logins.txt", "rw");
-//               for(int i = 0; i < ln; i++){
-//                   raf.readLine();
-//               }
-//               
-//               raf.writeBytes("Username:" + usr + ", " );
-////               raf.writeBytes("E-mail:" + email + ", ");
-//               raf.writeBytes("Password:" + psword  + " " );
-//               raf.writeBytes("\r\n");
-//               raf.writeBytes("\r\n");
-//               
-//               
-//                 
-//           } catch (FileNotFoundException ex) {
-//               Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-//           } catch (IOException ex) {
-//               Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-//           }
-//    }
-//    
+
     void checkData(String usr, String psword){
            try {
-               RandomAccessFile raf = new RandomAccessFile(f + "\\loginpass.txt", "rw");
+               RandomAccessFile raf = new RandomAccessFile(Constants.LOGIN_DATA, "rw");
                String lines = raf.readLine();
                Username = lines.substring(9);
-//              
                Password = raf.readLine().substring(9);
               
                
@@ -79,57 +59,7 @@ public class login extends javax.swing.JFrame {
                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
            }
     }
-    
-    
-    void countLines(){
-           try {
-               ln = 1;
-               RandomAccessFile raf = new RandomAccessFile(f + "\\logins.txt", "rw");
-               for(int i = 0; raf.readLine()!= null; i++){
-                   ln++;
-               }
-               System.out.println("Number of lines: " + ln);
-           
-           } catch (FileNotFoundException ex) {
-               Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-           } catch (IOException ex) {
-               Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-           }
-        
-    }
-    
-//    void logic(String usr, String psword){
-//           try {
-//               RandomAccessFile raf = new RandomAccessFile(f + "\\logins.txt", "rw");
-//               for(int i = 0; i < ln; i+=4){
-//                   System.out.println("count " + i);
-//                   String forUser = raf.readLine().substring(9);
-//                   raf.readLine();
-//                   String forPass = raf.readLine().substring(9);
-//                   
-//                   if(usr.equals(forUser) & psword.equals(forPass)){
-//                       Menu mn = new Menu();
-//                       mn.setVisible(true);
-//                       this.dispose();
-////                       JOptionPane.showMessageDialog(null, "Password Matched!");
-//                       break;
-//                   }else if(i == ln - 3){
-//                       JOptionPane.showMessageDialog(null, "Incorrect username/password!");
-//                       break;
-//                   }
-//                   
-//                   for(int k = 1; k <= 2; k++ ){
-//                       raf.readLine();
-//                   }
-//               }
-//               
-//               
-//           } catch (FileNotFoundException ex) {
-//               Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-//           } catch (IOException ex) {
-//               Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-//           }
-//    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -291,62 +221,59 @@ public class login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfusActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_tfusActionPerformed
+    private void tfusActionPerformed(java.awt.event.ActionEvent evt) {
+    }
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+    private void clearFields(){
         tfus.setText("");
-        
         tfps.setText("");
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-//        createfolder();
-//        readFile();
-//        countLines();
-//        logic(tfus.getText(), tfps.getText());
+    // clear button action listerner
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+        clearFields();
+    }
 
-//            if(!tfus.getText().equals(Username) & !tfps.getText().equals(Password)){
-//                JOptionPane.showMessageDialog(null, "Please enter values");
-//            }else{
-                 Menu menu = new Menu();
-                menu.setVisible(true);
-                this.dispose();
-//            }
-            
-//          if(tfus.getText() != null & tfps.getText() != null){
-//                Menu menu = new Menu();
-//                menu.setVisible(true);
-//                this.dispose();
-//          }else{
-//              JOptionPane.showMessageDialog(null, "Please Fill");
-//          }
-          
-           
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private boolean validateCredentials(String username, String password){
+        List<LoginData> allCreds = LoginData.getAllCredentials();
+        for(LoginData data : allCreds) {
+            if(data.getUserName().equals(username)){
+                if(data.getPassword().equals(password)){
+                    return true;
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Invalid userName and password");
+                    return false;
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Username is not registered in the system!");
+                return false;
+            }
+        }
+        return false;
+    }
 
-    private void tfpsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfpsActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_tfpsActionPerformed
+    // login button action listerner
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+        if(validateCredentials(tfus.getText(), tfps.getText())){
+            Menu menu = new Menu();
+            menu.setVisible(true);
+            clearFields();
+            this.dispose();
+        }
+        clearFields();
+        return;
+    }
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-//        createfolder();
-//        readFile();
-//        countLines();
-//        addData(tfus.getText(),tfmail.getText() ,tfps.getText());
-        
+    private void tfpsActionPerformed(java.awt.event.ActionEvent evt) {
+    }
+
+    // register button action listerner
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
             Register r1 = new Register();
             r1.setVisible(true);
             this.dispose();
-//            
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
 
     /**
      * @param args the command line arguments
@@ -382,19 +309,4 @@ public class login extends javax.swing.JFrame {
             }
         });
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JFrame jFrame1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField tfps;
-    private javax.swing.JTextField tfus;
-    // End of variables declaration//GEN-END:variables
 }

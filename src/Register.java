@@ -1,136 +1,72 @@
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import common.Constants;
+import common.FileOperations;
 import javax.swing.JOptionPane;
+import pojo.LoginData;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author DM
- */
 public class Register extends javax.swing.JFrame {
-            File f = new File("C:\\Netbeans Project");
-       
-            String Name, Username, Password, Confirm, Class;
+    // Variables declaration
+    private javax.swing.JButton BackL;
+    private javax.swing.JTextField CPasswords;
+    private javax.swing.JTextField Names;
+    private javax.swing.JTextField Passwords;
+    private javax.swing.JTextField Usernames;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JColorChooser jColorChooser1;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField jTextField1;
 
-            int ln;
+    String selectedClass =  "";
+    int ln;
     /**
      * Creates new form Register
      */
     public Register() {
         initComponents();
     }
-    
-    
-    void createfolder(){
-        if(!f.exists()){
-            f.mkdirs();
+
+    private boolean isValidName(String name) {
+        if(name.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Name cannot be empty!");
+            return false;
         }
+        return true;
     }
 
-    void readFile(){
-           try {
-               FileReader fr = new FileReader(f + "\\data.txt");
-               System.out.println("File exists!");
-           } catch (FileNotFoundException ex) {
-               try {
-                   FileWriter fw = new FileWriter(f + "\\data.txt");
-                   System.out.println("File Created");
-               } catch (IOException ex1) {
-                   Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex1);
-               }
-           }
-        
-    }
-    boolean validate(String name, String usr, String psword, String cpass, String course){
-        if(name.trim().isEmpty() || usr.trim().isEmpty() || psword.trim().isEmpty() || cpass.trim().isEmpty() || course.trim().isEmpty()){
-            return true;
+    private boolean isValidUserName(String userName) {
+        if(userName.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Username cannot be empty!");
+            return false;
         }
-        return false;
-        
+        return true;
     }
-    void addData(String name, String usr, String psword, String cpass, String course){
-           try {
-               RandomAccessFile raf = new RandomAccessFile(f + "\\data.txt", "rw");
-               for(int i = 0; i < ln; i++){
-                   raf.readLine();
-               }
-               
-               raf.writeBytes( name + ", " );
-               raf.writeBytes(usr + ", " );
-               raf.writeBytes(psword  + ", " );
-//               raf.writeBytes("ConfirmPass:" + cpass  + ", " );
-               raf.writeBytes( course);
-               raf.writeBytes("\r\n");
-               
-               
-               
-               
-           } catch (FileNotFoundException ex) {
-               Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-           } catch (IOException ex) {
-               Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-           }
-    }
-//    void checkPass(String pass, String cpass){
-//       
-//        
-//        
-//    }
-    void countLines(){
-           try {
-               ln = 1;
-               RandomAccessFile raf = new RandomAccessFile(f + "\\data.txt", "rw");
-               for(int i = 0; raf.readLine()!= null; i++){
-                   ln++;
-               }
-               System.out.println("Number of lines: " + ln);
-           
-           } catch (FileNotFoundException ex) {
-               Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-           } catch (IOException ex) {
-               Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-           }
-        
-    }
-    void logic(String usr, String psword){
-           try {
-               RandomAccessFile raf = new RandomAccessFile(f + "\\data.txt", "rw");
-               for(int i = 0; i < ln; i+=4){
-                   System.out.println("count " + i);
-                   raf.readLine();
-                   raf.readLine();
-                   String forPass = raf.readLine().substring(9);
-                   String forCPass = raf.readLine().substring(9);
-                   
-                   if(usr.equals(forPass) & psword.equals(forCPass)){
-                       JOptionPane.showMessageDialog(null, "Registered");
-                       break;
-                   }else if(i == (ln - 4)){
-                       JOptionPane.showMessageDialog(null, "Passwords don't match");
-                   }
-                   
-                   for(int k = 1; k <= 2; k++ ){
-                       raf.readLine();
-                   }
-               }
-               
-               
-           } catch (FileNotFoundException ex) {
-               Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-           } catch (IOException ex) {
-               Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-           }
+
+    private boolean isValidPasswords(String password, String confPassword) {
+        if(password.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Password cannot be empty!");
+            return false;
+        }
+
+        if(confPassword.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Confirm Password cannot be empty!");
+            return false;
+        }
+
+        if(!password.equals(confPassword)){
+            JOptionPane.showMessageDialog(null, "Password and Confirm Password does not match!");
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -307,79 +243,69 @@ public class Register extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-            createfolder();
-            readFile();
-            countLines();
-            
-            if(validate(Names.getText(),Usernames.getText(), Passwords.getText(), CPasswords.getText(), jComboBox1.getSelectedItem().toString())){
-                if(Names.getText().trim().isEmpty()){
-                    JOptionPane.showMessageDialog(null, "Please fill Name!");
-                }else if(Usernames.getText().trim().isEmpty()){
-                    JOptionPane.showMessageDialog(null, "Please fill Username!");
-                }else if(Passwords.getText().trim().isEmpty()){
-                    JOptionPane.showMessageDialog(null, "Please fill Password!");
-                }else if(CPasswords.getText().trim().isEmpty()){
-                    JOptionPane.showMessageDialog(null, "Please confirm your password!");
-                }else {
-                    JOptionPane.showMessageDialog(null, "Please fill all fields correctly!");
-                }
-                
-                
-                
-                
-            }else if(!validate(Names.getText(),Usernames.getText(), Passwords.getText(), CPasswords.getText(), jComboBox1.getSelectedItem().toString())){           
-                if(!"Select Class".equals(jComboBox1.getSelectedItem().toString())){
-                    if(Passwords.getText().equals(CPasswords.getText())){
-                        addData(Names.getText(),Usernames.getText(), Passwords.getText(), CPasswords.getText(), jComboBox1.getSelectedItem().toString());
-                        login r1 = new login();
-                        r1.setVisible(true);
-                        this.dispose();
-                    }else{
-                        JOptionPane.showMessageDialog(null, "Passwords don't match");
-                    }
-                    
-                }else{
-                    JOptionPane.showMessageDialog(null, "Please select class!");
-                }
-                
-            }
-            
-            
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        String name = Names.getText().trim();
+        if(!isValidName(name)){
+            return;
+        }
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-        String s = jComboBox1.getSelectedItem().toString();
-        
-        
-        
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+        String userName = Usernames.getText().trim();
+        if(!isValidUserName(userName)){
+            return;
+        }
 
-    private void NamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NamesActionPerformed
+        String pwd = Passwords.getText().trim();
+        String confPwd = CPasswords.getText().trim();
+        if(!isValidPasswords(pwd,confPwd)){
+            return;
+        }
 
-    private void CPasswordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPasswordsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CPasswordsActionPerformed
+        if(selectedClass.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please select class standard!");
+            return;
+        }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        // create object for register data using user inputs.
+        LoginData loginInfo = new LoginData();
+        loginInfo.setName(name);
+        loginInfo.setUserName(userName);
+        loginInfo.setPassword(pwd);
+        loginInfo.setClassStandard(selectedClass);
+
+        String data = LoginData.mapLoginDataModelToString(loginInfo);
+
+        if(!FileOperations.saveData(Constants.LOGIN_DATA, data)){
+            JOptionPane.showMessageDialog(this,"Failed to register user, please try again later.");
+            return;
+        }
+        JOptionPane.showMessageDialog(this,"Successfully Registered. Please Login.");
+        login r1 = new login();
+        r1.setVisible(true);
+        this.dispose();
+
+    }
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {
+        selectedClass = jComboBox1.getSelectedItem().toString();
+    }
+
+    private void NamesActionPerformed(java.awt.event.ActionEvent evt) {
+    }
+
+    private void CPasswordsActionPerformed(java.awt.event.ActionEvent evt) {
+    }
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         CPasswords.setText("");
         Names.setText("");
         Usernames.setText("");
         Passwords.setText("");
-//        jComboBox1.setSelectedItem("Class");
-       
-        
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
+        selectedClass = "";
+    }
 
     private void UsernamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernamesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UsernamesActionPerformed
+
+    }
 
     private void PasswordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordsActionPerformed
         // TODO add your handling code here:
@@ -426,26 +352,4 @@ public class Register extends javax.swing.JFrame {
             }
         });
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BackL;
-    private javax.swing.JTextField CPasswords;
-    private javax.swing.JTextField Names;
-    private javax.swing.JTextField Passwords;
-    private javax.swing.JTextField Usernames;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JColorChooser jColorChooser1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
-    // End of variables declaration//GEN-END:variables
 }

@@ -133,7 +133,9 @@ public class Tasks extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        
+        Delete dl = new Delete();
+        dl.setVisible(true);
+        this.dispose();
         
         
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -145,6 +147,9 @@ public class Tasks extends javax.swing.JFrame {
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
         // TODO add your handling code here:
+        edit e = new edit();
+        e.setVisible(true);
+        this.dispose();
         
         
     }//GEN-LAST:event_editActionPerformed

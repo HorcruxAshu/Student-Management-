@@ -19,13 +19,76 @@ public class AddStudent extends javax.swing.JFrame {
         initComponents();
     }
 
-    boolean validate(String roll, String fname, String lname, String fathername, String mothername, String tele, String mno, String Address){
-        if(roll.trim().isEmpty() || fname.trim().isEmpty() || lname.trim().isEmpty() || fathername.trim().isEmpty() || mothername.trim().isEmpty() || tele.trim().isEmpty() || mno.trim().isEmpty() || Address.trim().isEmpty()){
-            return true;
+    
+    boolean isValidRoll(String Roll){
+        if(Roll.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Roll no cannot be empty!");
+            return false;
         }
-        return false;
+        return true;
+    }
+    boolean isValidFName(String fname){
+        if(fname.isEmpty()){
+            JOptionPane.showMessageDialog(null, "First Name cannot be empty!");
+            return  false;
+        }
+        return true;
+    }
+    boolean isValidLName(String lname){
+        if(lname.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Last Name cannot be empty!");
+            return false;
+        }
+        return true;
+    }
+    boolean isValidDate(String date){
+        if(date.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Date cannot be empty!");
+            return false;
+        }
+        
+        return true;
         
     }
+    
+    
+    
+    boolean isValidFatherName(String fname){
+        if(fname.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Father's name cannot be empty!");
+            return false;
+        }
+        return true;
+    }
+    boolean isValidMotherName(String mname){
+        if(mname.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Mother's name cannot be empty!");
+            return false;
+        }
+        return true;
+    }
+    boolean isValidTeleNum(String tnum){
+        if(tnum.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Telephone number cannot be empty!");
+            return false;
+        }
+        return true;
+    }
+    boolean isValidMobileNum(String mnum){
+        if(mnum.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Mobile number cannot be empty!");
+            return false;
+        }
+        return true;
+    }
+    boolean isValidAddress(String Address){
+        if(Address.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Address cannot be empty!");
+            return false;
+        }
+        return true;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,7 +124,7 @@ public class AddStudent extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         address = new javax.swing.JTextArea();
         gender = new javax.swing.JComboBox<>();
-        dob = new com.toedter.calendar.JDateChooser();
+        date = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,6 +151,11 @@ public class AddStudent extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel4.setText("Last_Name ");
 
+        firstname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                firstnameActionPerformed(evt);
+            }
+        });
         firstname.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 firstnameKeyPressed(evt);
@@ -197,16 +265,9 @@ public class AddStudent extends javax.swing.JFrame {
             }
         });
 
-        dob.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                dobInputMethodTextChanged(evt);
-            }
-        });
-        dob.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                dobKeyPressed(evt);
+        date.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dateActionPerformed(evt);
             }
         });
 
@@ -235,16 +296,16 @@ public class AddStudent extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(htele, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(gender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(mnum, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(dob, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(date, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(firstname, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(roll, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(lastname, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(father, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                                        .addComponent(mother, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(mnum, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(mother, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))))
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(add)
@@ -275,10 +336,10 @@ public class AddStudent extends javax.swing.JFrame {
                     .addComponent(lastname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(dob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
+                    .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(gender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -306,7 +367,7 @@ public class AddStudent extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(add)
                     .addComponent(clear)
@@ -320,37 +381,47 @@ public class AddStudent extends javax.swing.JFrame {
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         // TODO add your handling code here:
         
-        if(validate(roll.getText(), firstname.getText(), lastname.getText(), father.getText(), mother.getText(), htele.getText(), mnum.getText(), address.getText())){
-            if(roll.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null, "Please enter roll no");
-            }else if(firstname.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null, "Please enter first name");
-            }else if(lastname.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null, "Please enter last name");
-            }else if(father.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null, "Please enter father's name");
-            }else if(mother.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null, "Please enter mother's name");
-            }else if(htele.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null, "Please enter home telephone number");
-            }else if(mnum.getText().isEmpty()){
-                 JOptionPane.showMessageDialog(null, "Please enter mobile number");
-            }else if(address.getText().isEmpty()){
-                 JOptionPane.showMessageDialog(null, "Please enter the address");
-            }
+        if(!isValidRoll(roll.getText().trim())){
+            return;
         }
-        if(!(validate(roll.getText(), firstname.getText(), lastname.getText(), father.getText(), mother.getText(), htele.getText(), mnum.getText(), address.getText()))){
-            if(!"Select Gender".equals(gender.getSelectedItem().toString())){
-                if("Select Class".equals(jComboBox1.getSelectedItem().toString())) { 
-                    JOptionPane.showMessageDialog(null, "Please select class!");
-                }else{
-                    JOptionPane.showMessageDialog(null, "Student Added Successfully");
-                }
-            }else{
+        if(!isValidFName(firstname.getText().trim())){
+            return;
+        }
+        if(!isValidLName(lastname.getText().trim())){
+            return;
+        }
+        if(!isValidDate(date.getText().trim())){
+            return;
+        }
+        if("Select Gender".equals(gender.getSelectedItem().toString())){
                 JOptionPane.showMessageDialog(null, "Please select gender!");
-            }
-            
+                return;
         }
+        
+        if(!isValidFatherName(father.getText().trim())){
+            return;
+        }
+        if(!isValidMotherName(mother.getText().trim())){
+            return;
+        }
+        if(!isValidTeleNum(htele.getText().trim())){
+            return;
+        }
+        if(!isValidMobileNum(mnum.getText().trim())){
+            return; 
+        }
+        if(!isValidAddress(address.getText().trim())){
+            return;
+        }
+        
+        if("Select Class".equals(jComboBox1.getSelectedItem().toString())) { 
+            JOptionPane.showMessageDialog(null, "Please select class!");
+            return;
+        }
+        JOptionPane.showMessageDialog(null, "Student added successfully!");
+        Tasks tk = new Tasks();
+        tk.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_addActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -497,6 +568,14 @@ public class AddStudent extends javax.swing.JFrame {
     private void rollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rollActionPerformed
+
+    private void firstnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_firstnameActionPerformed
+
+    private void dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dateActionPerformed
     
     /**
      * @param args the command line arguments
@@ -537,7 +616,7 @@ public class AddStudent extends javax.swing.JFrame {
     private javax.swing.JButton add;
     private javax.swing.JTextArea address;
     private javax.swing.JButton clear;
-    private com.toedter.calendar.JDateChooser dob;
+    private javax.swing.JTextField date;
     private javax.swing.JTextField father;
     private javax.swing.JTextField firstname;
     private javax.swing.JComboBox<String> gender;

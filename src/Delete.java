@@ -1,5 +1,6 @@
 
 import javax.swing.JOptionPane;
+import pojo.StudentData;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -131,11 +132,30 @@ public class Delete extends javax.swing.JFrame {
     }//GEN-LAST:event_dbackActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Successfully deleted!");
-        Tasks t2 = new Tasks();
-        t2.setVisible(true);
-        this.dispose();  
+        String rollNumber = droll.getText();
+        if(rollNumber.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter roll no");
+            return;
+        }
+
+        StudentData studentToDelete = StudentData.getStudentByRollNo(rollNumber);
+        if(studentToDelete == null) {
+            JOptionPane.showMessageDialog(this,"Student with Roll Number " + rollNumber + " does not exists");
+            return;
+        }
+        System.out.println(studentToDelete);
+        this.dispose();
+
+        if(StudentData.delete(studentToDelete)){
+            JOptionPane.showMessageDialog(this,"Successfully deleted student.");
+            dispose();
+            Tasks tk = new Tasks();
+            tk.setVisible(true);
+            this.dispose();
+        }else {
+            JOptionPane.showMessageDialog(this,"Failed to delete student, please try again later.");
+            return;
+        }
     }//GEN-LAST:event_deleteActionPerformed
 
     /**

@@ -1,5 +1,6 @@
 
 import javax.swing.JOptionPane;
+import pojo.StudentData;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -126,12 +127,20 @@ public class edit extends javax.swing.JFrame {
     }//GEN-LAST:event_erollKeyPressed
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
-        // TODO add your handling code here:
-        if(eroll.getText().isEmpty()){
+        String rollNumber = eroll.getText();
+        if(rollNumber.isEmpty()){
             JOptionPane.showMessageDialog(null, "Please enter roll no");
             return;
         }
-        update up = new update();
+        StudentData studentToUpdate = StudentData.getStudentByRollNo(rollNumber);
+        if(studentToUpdate == null) {
+            JOptionPane.showMessageDialog(this,"Student with Roll Number " + rollNumber + " does not exists");
+            return;
+        }
+        System.out.println(studentToUpdate);
+        this.dispose();
+
+        update up = new update(studentToUpdate);
         up.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_searchActionPerformed

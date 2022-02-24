@@ -1,5 +1,6 @@
 
 import javax.swing.JOptionPane;
+import pojo.StudentData;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -87,6 +88,17 @@ public class AddStudent extends javax.swing.JFrame {
             return false;
         }
         return true;
+    }
+
+    private void resetFields(){
+        roll.setText("");
+        mnum.setText("");
+        htele.setText("");
+        father.setText("");
+        mother.setText("");
+        firstname.setText("");
+        lastname.setText("");
+        address.setText("");
     }
 
     /**
@@ -380,48 +392,90 @@ public class AddStudent extends javax.swing.JFrame {
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         // TODO add your handling code here:
-        
-        if(!isValidRoll(roll.getText().trim())){
+
+        String rollNum = roll.getText().trim();
+        if(!isValidRoll(rollNum)){
             return;
         }
-        if(!isValidFName(firstname.getText().trim())){
+
+        String fName = firstname.getText().trim();
+        if(!isValidFName(fName)){
             return;
         }
-        if(!isValidLName(lastname.getText().trim())){
+
+        String lName = lastname.getText().trim();
+        if(!isValidLName(lName)){
             return;
         }
-        if(!isValidDate(date.getText().trim())){
+
+        String dob = date.getText().trim();
+        if(!isValidDate(dob)){
             return;
         }
-        if("Select Gender".equals(gender.getSelectedItem().toString())){
+
+        String selectedGender = gender.getSelectedItem().toString();
+        if("Select Gender".equals(selectedGender)){
                 JOptionPane.showMessageDialog(null, "Please select gender!");
                 return;
         }
-        
-        if(!isValidFatherName(father.getText().trim())){
+
+        String fatherName = father.getText().trim();
+        if(!isValidFatherName(fatherName)){
             return;
         }
-        if(!isValidMotherName(mother.getText().trim())){
+
+        String montherName = mother.getText().trim();
+        if(!isValidMotherName(montherName)){
             return;
         }
-        if(!isValidTeleNum(htele.getText().trim())){
+
+        String homeTel = htele.getText().trim();
+        if(!isValidTeleNum(homeTel)){
             return;
         }
-        if(!isValidMobileNum(mnum.getText().trim())){
+
+        String mobile = mnum.getText().trim();
+        if(!isValidMobileNum(mobile)){
             return; 
         }
-        if(!isValidAddress(address.getText().trim())){
+
+        String addr = address.getText().trim();
+        if(!isValidAddress(addr)){
             return;
         }
-        
-        if("Select Class".equals(jComboBox1.getSelectedItem().toString())) { 
+
+        String classStd = jComboBox1.getSelectedItem().toString();
+        if("Select Class".equals(classStd)) {
             JOptionPane.showMessageDialog(null, "Please select class!");
             return;
         }
-        JOptionPane.showMessageDialog(null, "Student added successfully!");
-        Tasks tk = new Tasks();
-        tk.setVisible(true);
-        this.dispose();
+
+        StudentData newStudent = new StudentData();
+        newStudent.setRollNum(rollNum);
+        newStudent.setFirstName(fName);
+        newStudent.setLastName(lName);
+        newStudent.setDateOfBirth(dob);
+        newStudent.setGender(selectedGender);
+        newStudent.setFatherName(fatherName);
+        newStudent.setMotherName(montherName);
+        newStudent.setHomeTelephone(homeTel);
+        newStudent.setMobileNumber(mobile);
+        newStudent.setAddress(addr);
+        newStudent.setClassStandard(classStd);
+
+
+        if(StudentData.add(newStudent)){
+            JOptionPane.showMessageDialog(this,"Successfully added student.");
+            dispose();
+            Tasks tk = new Tasks();
+            tk.setVisible(true);
+            this.dispose();
+        }else {
+            JOptionPane.showMessageDialog(this,"Failed to add student, please try again later.");
+            resetFields();
+            return;
+        }
+
     }//GEN-LAST:event_addActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -433,14 +487,7 @@ public class AddStudent extends javax.swing.JFrame {
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
         // TODO add your handling code here:
-        roll.setText("");
-        mnum.setText("");
-        htele.setText("");
-        father.setText("");
-        mother.setText("");
-        firstname.setText("");
-        lastname.setText("");
-        address.setText("");
+        resetFields();
         
     }//GEN-LAST:event_clearActionPerformed
 

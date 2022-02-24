@@ -1,5 +1,6 @@
 
 import javax.swing.JOptionPane;
+import pojo.StudentData;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -12,10 +13,12 @@ import javax.swing.JOptionPane;
  */
 public class update extends javax.swing.JFrame {
 
+    StudentData studentToUpdate = null;
     /**
      * Creates new form update
      */
-    public update() {
+    public update(StudentData studentData) {
+        studentToUpdate =  studentData;
         initComponents();
     }
 
@@ -42,9 +45,7 @@ public class update extends javax.swing.JFrame {
         return true;
         
     }
-    
-    
-    
+
     boolean isValidFatherName(String fname){
         if(fname.isEmpty()){
             JOptionPane.showMessageDialog(null, "Father's name cannot be empty!");
@@ -528,7 +529,7 @@ public class update extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new update().setVisible(true);
+                new update(new StudentData()).setVisible(true);
             }
         });
     }

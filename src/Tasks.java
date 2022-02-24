@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to EditStudent this template
  */
 
 /**
@@ -133,7 +133,7 @@ public class Tasks extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Delete dl = new Delete();
+        DeleteStudent dl = new DeleteStudent();
         dl.setVisible(true);
         this.dispose();
         
@@ -147,7 +147,7 @@ public class Tasks extends javax.swing.JFrame {
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
         // TODO add your handling code here:
-        edit e = new edit();
+        EditStudent e = new EditStudent();
         e.setVisible(true);
         this.dispose();
         

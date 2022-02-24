@@ -140,6 +140,8 @@ public class update extends javax.swing.JFrame {
             }
         });
 
+        firstname.setText(studentToUpdate.getFirstName());
+
         firstname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 firstnameActionPerformed(evt);
@@ -151,6 +153,7 @@ public class update extends javax.swing.JFrame {
             }
         });
 
+        lastname.setText(studentToUpdate.getLastName());
         lastname.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 lastnameKeyPressed(evt);

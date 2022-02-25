@@ -11,12 +11,12 @@ import pojo.StudentData;
  *
  * @author DM
  */
-public class EditStudent extends javax.swing.JFrame {
+public class editStudent extends javax.swing.JFrame {
 
     /**
      * Creates new form edit
      */
-    public EditStudent() {
+    public editStudent() {
         initComponents();
     }
 
@@ -140,7 +140,7 @@ public class EditStudent extends javax.swing.JFrame {
         System.out.println(studentToUpdate);
         this.dispose();
 
-        UpdateStudent up = new UpdateStudent(studentToUpdate);
+        updateStudent up = new updateStudent(studentToUpdate);
         up.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_searchActionPerformed
@@ -169,14 +169,18 @@ public class EditStudent extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -185,7 +189,7 @@ public class EditStudent extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditStudent().setVisible(true);
+                new editStudent().setVisible(true);
             }
         });
     }

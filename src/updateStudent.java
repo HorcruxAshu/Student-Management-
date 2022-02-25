@@ -11,13 +11,13 @@ import pojo.StudentData;
  *
  * @author DM
  */
-public class UpdateStudent extends javax.swing.JFrame {
+public class updateStudent extends javax.swing.JFrame {
 
     StudentData studentToUpdate = null;
     /**
      * Creates new form update
      */
-    public UpdateStudent(StudentData studentData) {
+    public updateStudent(StudentData studentData) {
         studentToUpdate =  studentData;
         initComponents();
     }
@@ -142,6 +142,7 @@ public class UpdateStudent extends javax.swing.JFrame {
 
         firstname.setText(studentToUpdate.getFirstName());
 
+
         firstname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 firstnameActionPerformed(evt);
@@ -163,12 +164,16 @@ public class UpdateStudent extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel5.setText("Date Of Birth");
 
+        date.setText(studentToUpdate.getDateOfBirth());
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel6.setText("Gender");
+
+
+
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel7.setText("Father's Name");
 
+        father.setText(studentToUpdate.getFatherName());
         father.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fatherActionPerformed(evt);
@@ -183,6 +188,7 @@ public class UpdateStudent extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel8.setText("Mother's Name");
 
+        mother.setText(studentToUpdate.getMotherName());
         mother.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 motherKeyPressed(evt);
@@ -192,6 +198,7 @@ public class UpdateStudent extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel9.setText("Home Telephone");
 
+        htele.setText(studentToUpdate.getHomeTelephone());
         htele.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hteleActionPerformed(evt);
@@ -206,6 +213,7 @@ public class UpdateStudent extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel10.setText("Mobile Number");
 
+        mnum.setText(studentToUpdate.getMobileNumber());
         mnum.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 mnumKeyPressed(evt);
@@ -214,9 +222,12 @@ public class UpdateStudent extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel11.setText("Address");
+        uaddress.setText(studentToUpdate.getAddress());
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel12.setText("Class");
+
+
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Class", "11A", "11B", "12A", "12B" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -450,7 +461,7 @@ public class UpdateStudent extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        EditStudent e1 = new EditStudent();
+        editStudent e1 = new editStudent();
         e1.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -519,13 +530,13 @@ public class UpdateStudent extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UpdateStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updateStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UpdateStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updateStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UpdateStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updateStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UpdateStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updateStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -535,7 +546,7 @@ public class UpdateStudent extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UpdateStudent(new StudentData()).setVisible(true);
+                new updateStudent(new StudentData()).setVisible(true);
             }
         });
     }

@@ -147,7 +147,7 @@ public class Tasks extends javax.swing.JFrame {
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
         // TODO add your handling code here:
-        EditStudent e = new EditStudent();
+        editStudent e = new editStudent();
         e.setVisible(true);
         this.dispose();
         

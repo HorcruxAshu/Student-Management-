@@ -53,6 +53,11 @@ public class Tasks extends javax.swing.JFrame {
         });
 
         view.setText("View All");
+        view.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Delete");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -131,6 +136,15 @@ public class Tasks extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BackTActionPerformed
 
+    private void viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewActionPerformed
+        // TODO add your handling code here:
+        ViewAllStudents viewStudents = new ViewAllStudents();
+        viewStudents.setVisible(true);
+        this.dispose();
+
+
+    }//GEN-LAST:event_viewActionPerformed
+
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         DeleteStudent dl = new DeleteStudent();
@@ -142,6 +156,7 @@ public class Tasks extends javax.swing.JFrame {
 
     private void jButton4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton4KeyPressed
         // TODO add your handling code here:
+
        
     }//GEN-LAST:event_jButton4KeyPressed
 

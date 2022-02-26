@@ -130,6 +130,7 @@ public class updateStudent extends javax.swing.JFrame {
                 genderActionPerformed(evt);
             }
         });
+        gender.setSelectedItem(studentToUpdate.getGender());
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel4.setText("Last_Name ");
@@ -166,9 +167,6 @@ public class updateStudent extends javax.swing.JFrame {
 
         date.setText(studentToUpdate.getDateOfBirth());
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-
-
-
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel7.setText("Father's Name");
@@ -235,6 +233,7 @@ public class updateStudent extends javax.swing.JFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
+        jComboBox1.setSelectedItem(studentToUpdate.getClassStandard());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Update data");

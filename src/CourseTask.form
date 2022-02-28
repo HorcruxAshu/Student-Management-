@@ -85,8 +85,12 @@
     </Component>
     <Component class="javax.swing.JButton" name="viewClass">
       <Properties>
-        <Property name="text" type="java.lang.String" value="VIew Courses"/>
+        <Property name="text" type="java.lang.String" value="View Courses"/>
+        <Property name="actionCommand" type="java.lang.String" value="View Courses"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewClassActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="deleteClass">
       <Properties>

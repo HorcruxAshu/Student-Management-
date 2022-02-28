@@ -46,7 +46,13 @@ public class CourseTask extends javax.swing.JFrame {
 
         editClass.setText("Edit Course");
 
-        viewClass.setText("VIew Courses");
+        viewClass.setText("View Courses");
+        viewClass.setActionCommand("View Courses");
+        viewClass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewClassActionPerformed(evt);
+            }
+        });
 
         deleteClass.setText("Delete Course");
 
@@ -107,8 +113,13 @@ public class CourseTask extends javax.swing.JFrame {
         // TODO add your handling code here:
         AddCourse ac = new AddCourse();
         ac.setVisible(true);
-        this.dispose();
+        this.dispose(); 
+        
     }//GEN-LAST:event_addClassActionPerformed
+
+    private void viewClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewClassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewClassActionPerformed
 
     /**
      * @param args the command line arguments

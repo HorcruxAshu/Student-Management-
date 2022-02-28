@@ -301,6 +301,8 @@ public class AddCourse extends javax.swing.JFrame {
         CourseTask ct = new CourseTask();
         ct.setVisible(true);
         this.dispose();
+
+        //course
     }//GEN-LAST:event_addCourseActionPerformed
 
     private void subject1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject1ActionPerformed
@@ -310,7 +312,11 @@ public class AddCourse extends javax.swing.JFrame {
                  return;
         }
         s1 = subject1.getSelectedItem().toString();
-
+        if(s1.equals(s5) || s1.equals(s4) || s1.equals(s6) || s1.equals(s2) || s1.equals(s3)){
+            JOptionPane.showMessageDialog(null, "Please select another subject!");
+            subject1.setSelectedIndex(0);
+            return;
+        }
 
  
     }//GEN-LAST:event_subject1ActionPerformed
@@ -345,7 +351,7 @@ public class AddCourse extends javax.swing.JFrame {
                  return;
         }
         s3 = subject3.getSelectedItem().toString();
-        if(s3.equals(s2) || s3.equals(s1) ){
+        if(s3.equals(s5) || s3.equals(s4) || s3.equals(s6) || s3.equals(s2) || s3.equals(s1)){
             JOptionPane.showMessageDialog(null, "Please select another subject!");
             subject3.setSelectedIndex(0);
             return;
@@ -360,7 +366,7 @@ public class AddCourse extends javax.swing.JFrame {
                  return;
         }
         s2 = subject2.getSelectedItem().toString();
-        if(s2.equals(s1)){
+        if(s2.equals(s5) || s2.equals(s4) || s2.equals(s3) || s2.equals(s6) || s2.equals(s1)){
         JOptionPane.showMessageDialog(null, "Please select another subject!");
         subject2.setSelectedIndex(0);
         return;
@@ -374,7 +380,7 @@ public class AddCourse extends javax.swing.JFrame {
                  return;
         }
         s4 = subject4.getSelectedItem().toString();
-        if(s4.equals(s3) || s4.equals(s2) || s4.equals(s1) ){
+        if(s4.equals(s5) || s4.equals(s6) || s4.equals(s3) || s4.equals(s2) || s4.equals(s1)){
             JOptionPane.showMessageDialog(null, "Please select another subject!");
             subject4.setSelectedIndex(0);
             return;
@@ -388,7 +394,7 @@ public class AddCourse extends javax.swing.JFrame {
                  return;
         }
          s5 = subject5.getSelectedItem().toString();
-         if(s5.equals(s4) || s5.equals(s3) || s5.equals(s2) || s5.equals(s1)){
+         if(s5.equals(s6)||s5.equals(s4) || s5.equals(s3) || s5.equals(s2) || s5.equals(s1)){
             JOptionPane.showMessageDialog(null, "Please select another subject!");
             subject5.setSelectedIndex(0);
             return;

@@ -99,6 +99,11 @@ public class AddStudent extends javax.swing.JFrame {
         firstname.setText("");
         lastname.setText("");
         address.setText("");
+        date.setText("");
+        gender.setSelectedItem("Select Gender");
+        jComboBox1.setSelectedIndex(0);
+        
+        
     }
 
     /**

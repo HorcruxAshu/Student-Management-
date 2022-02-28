@@ -9,7 +9,7 @@ import pojo.StudentData;
 
 /**
  *
- * @author DM
+ * @author D
  */
 public class editStudent extends javax.swing.JFrame {
 

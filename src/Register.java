@@ -300,7 +300,8 @@ public class Register extends javax.swing.JFrame {
         Names.setText("");
         Usernames.setText("");
         Passwords.setText("");
-//        jComboBox1.setSelectedItem("Class");
+        jComboBox1.setSelectedIndex(0);
+
 
 
 

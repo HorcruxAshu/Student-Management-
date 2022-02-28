@@ -124,13 +124,13 @@ public class updateStudent extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel3.setText("First_Name");
 
+
         gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Gender", "Male", "Female" }));
         gender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 genderActionPerformed(evt);
             }
         });
-        gender.setSelectedItem(studentToUpdate.getGender());
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel4.setText("Last_Name ");
@@ -142,7 +142,6 @@ public class updateStudent extends javax.swing.JFrame {
         });
 
         firstname.setText(studentToUpdate.getFirstName());
-
 
         firstname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,9 +163,11 @@ public class updateStudent extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel5.setText("Date Of Birth");
-
         date.setText(studentToUpdate.getDateOfBirth());
+
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel6.setText("Gender");
+        gender.setSelectedItem(studentToUpdate.getGender());
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel7.setText("Father's Name");
@@ -185,8 +186,8 @@ public class updateStudent extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel8.setText("Mother's Name");
-
         mother.setText(studentToUpdate.getMotherName());
+
         mother.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 motherKeyPressed(evt);
@@ -210,7 +211,6 @@ public class updateStudent extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel10.setText("Mobile Number");
-
         mnum.setText(studentToUpdate.getMobileNumber());
         mnum.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -224,7 +224,6 @@ public class updateStudent extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel12.setText("Class");
-
 
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Class", "11A", "11B", "12A", "12B" }));

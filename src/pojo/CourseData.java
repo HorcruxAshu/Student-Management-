@@ -147,7 +147,7 @@ public class CourseData {
             FileOperations.renameFile(Constants.COURSE_DATA, "CourseData_Temp.txt");
         } catch (Exception ex){
             // log an exception
-            System.out.println("exception while updating books data - " + ex);
+            System.out.println("exception while deleting course data - " + ex);
             return false;
         }
         return  true;

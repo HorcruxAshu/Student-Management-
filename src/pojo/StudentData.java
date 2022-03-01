@@ -123,7 +123,7 @@ public class StudentData {
         return allStudents;
     }
 
-    public List<String> getAllRollNumbers(){
+    public static List<String> getAllRollNumbers(){
         List<StudentData> students = getAllStudents();
         List<String> allRollNumbers = students.stream()
             .map(StudentData::getRollNum)
@@ -138,6 +138,7 @@ public class StudentData {
             .orElse(null);
     }
 
+
     public static boolean add(StudentData newStudent){
         String studentData = mapStudentModelToString(newStudent);
 
@@ -145,6 +146,27 @@ public class StudentData {
             return false;
         }
         return true;
+    }
+
+    public static boolean update(StudentData studentToUpdate) {
+        try {
+            List<String> lines = FileOperations.readData(Constants.STUDENT_DATA);
+            for(String line : lines) {
+                if(line.contains(studentToUpdate.getRollNum())){
+                    line = mapStudentModelToString(studentToUpdate);
+                }
+                if(!line.contains("\r\n")){
+                    line = line + "\r\n";
+                }
+                FileOperations.saveData("StudentData_Temp.txt", line);
+            }
+            FileOperations.renameFile(Constants.STUDENT_DATA, "StudentData_Temp.txt");
+        } catch (Exception ex){
+            // log an exception
+            System.out.println("exception while updating books data - " + ex);
+            return false;
+        }
+        return  true;
     }
 
     public static boolean delete(StudentData studentToDelete) {
@@ -197,8 +219,6 @@ public class StudentData {
         data.append(Constants.SEPARATOR);
         data.append(student.getDateOfBirth());
         data.append(Constants.SEPARATOR);
-        data.append(student.getDateOfBirth());
-        data.append(Constants.SEPARATOR);
         data.append(student.getFatherName());
         data.append(Constants.SEPARATOR);
         data.append(student.getMotherName());
@@ -206,6 +226,8 @@ public class StudentData {
         data.append(student.getHomeTelephone());
         data.append(Constants.SEPARATOR);
         data.append(student.getMobileNumber());
+        data.append(Constants.SEPARATOR);
+        data.append(student.getAddress());
         data.append(Constants.SEPARATOR);
         data.append(student.getClassStandard());
         data.append("\r\n");

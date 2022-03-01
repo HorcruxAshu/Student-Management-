@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="Student-Management-:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/Student_Management__jar</output-path>
-    <root id="archive" name="Student-Management-.jar">
-      <element id="module-output" name="Student-Management-" />
-    </root>
-  </artifact>
-</component>

@@ -455,25 +455,25 @@ public class updateStudent extends javax.swing.JFrame {
     private void firstnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_firstnameKeyPressed
         // TODO add your handling code here:
         Character c = evt.getKeyChar();
-
+        
         if(!(c >= '0' && c<= '9')){
-            firstname.setEditable(true);
+                firstname.setEditable(true);
         }else{
-            firstname.setEditable(false);
-            JOptionPane.showMessageDialog(null, "Not a valid entry");
+             firstname.setEditable(false);
+             JOptionPane.showMessageDialog(null, "First name should only contain alphabets");
         }
 
     }//GEN-LAST:event_firstnameKeyPressed
 
     private void lastnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lastnameKeyPressed
         // TODO add your handling code here:
-        Character c = evt.getKeyChar();
-
+       Character c = evt.getKeyChar();
+        
         if(!(c >= '0' && c<= '9')){
-            lastname.setEditable(true);
+                lastname.setEditable(true);
         }else{
-            lastname.setEditable(false);
-            JOptionPane.showMessageDialog(null, "Not a valid entry");
+             lastname.setEditable(false);
+             JOptionPane.showMessageDialog(null, "Last name should only contain alphabets");
         }
     }//GEN-LAST:event_lastnameKeyPressed
 
@@ -484,24 +484,24 @@ public class updateStudent extends javax.swing.JFrame {
     private void fatherKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fatherKeyPressed
         // TODO add your handling code here:
         Character c = evt.getKeyChar();
-
+        
         if(!(c >= '0' && c<= '9')){
-            father.setEditable(true);
+                father.setEditable(true);
         }else{
-            father.setEditable(false);
-            JOptionPane.showMessageDialog(null, "Not a valid entry!");
+             father.setEditable(false);
+             JOptionPane.showMessageDialog(null, "Father's name should only contain alphabets");
         }
     }//GEN-LAST:event_fatherKeyPressed
 
     private void motherKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_motherKeyPressed
         // TODO add your handling code here:
         Character c = evt.getKeyChar();
-
+        
         if(!(c >= '0' && c<= '9')){
-            mother.setEditable(true);
+                mother.setEditable(true);
         }else{
-            mother.setEditable(false);
-            JOptionPane.showMessageDialog(null, "Not a valid entry!");
+             mother.setEditable(false);
+             JOptionPane.showMessageDialog(null, "Mother's name should only contain alphabets");
         }
     }//GEN-LAST:event_motherKeyPressed
 
@@ -512,32 +512,23 @@ public class updateStudent extends javax.swing.JFrame {
 
     private void hteleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hteleKeyPressed
         // TODO add your handling code here:
-        Character c = evt.getKeyChar();
+         Character c = evt.getKeyChar();
 
-        if(htele.getText().length() >= 10){
-            htele.setEditable(false);
-            JOptionPane.showMessageDialog(null, "You have exceeded the limit");
-
-        }
         if(Character.isLetter(c)){
             htele.setEditable(false);
-            JOptionPane.showMessageDialog(null, "Please enter numeric values");
+            JOptionPane.showMessageDialog(this,"Telephone number should contain only numeric values.");
         }else{
-            htele.setEditable(true);
+            htele.setEditable(true);           
         }
     }//GEN-LAST:event_hteleKeyPressed
 
     private void mnumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mnumKeyPressed
         // TODO add your handling code here:
         Character c = evt.getKeyChar();
-        if(mnum.getText().length() >= 10){
-            mnum.setEditable(false);
-            JOptionPane.showMessageDialog(null, "You have exceeded the limit");
 
-        }
         if(Character.isLetter(c)){
             mnum.setEditable(false);
-            JOptionPane.showMessageDialog(null, "Please enter numeric values");
+            JOptionPane.showMessageDialog(this,"Mobile number should contain only numeric values.");
         }else{
             mnum.setEditable(true);
 

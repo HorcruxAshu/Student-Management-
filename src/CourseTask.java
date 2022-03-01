@@ -55,6 +55,11 @@ public class CourseTask extends javax.swing.JFrame {
         });
 
         deleteClass.setText("Delete Course");
+        deleteClass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteClassActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +125,14 @@ public class CourseTask extends javax.swing.JFrame {
     private void viewClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewClassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_viewClassActionPerformed
+
+    private void deleteClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteClassActionPerformed
+        // TODO add your handling code here:
+
+        DeleteCourse dc = new DeleteCourse();
+        dc.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_deleteClassActionPerformed
 
     /**
      * @param args the command line arguments

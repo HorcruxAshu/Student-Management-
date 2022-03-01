@@ -1,7 +1,7 @@
 package courseManagement;
 
 import javax.swing.JOptionPane;
-
+import pojo.CourseData;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -18,6 +18,11 @@ public class UpdateCourse extends javax.swing.JFrame {
 
 
      */
+    CourseData courseToUpdate  = null;
+    String selectedClass = "";
+    String[] sarr11 = {"Select Subject","English A - Language and Literature", "Hindi B HL", "Biology HL", "Physics HL", "Chemistry HL", "Math HL", "Computer Science HL"};
+    String[] sarr12 = {"Select Subject","English A - Language and Literature", "Hindi B SL", "Biology SL", "Physics SL", "Chemistry SL", "Math SL", "Computer Science SL"};
+  
     String s1 = "";
     String s2 = "";
     String s3 = "";
@@ -26,10 +31,38 @@ public class UpdateCourse extends javax.swing.JFrame {
     String s6 = "";
 
 
-    public UpdateCourse() {
+    public UpdateCourse(CourseData courseUpdate) {
+        courseToUpdate = courseUpdate;
+        System.out.print(courseToUpdate.getClassName());
+        selectedClass = courseToUpdate.getClassName();
         initComponents();
+loadSubjectData(selectedClass);
+       
     }
-boolean checksubject(String subject1, String subject2, String subject3, String subject4, String subject5, String subject6 ){
+    void loadSubjectData(String selectedClass){
+       if(selectedClass.equals("11A") || selectedClass.equals("11B")){
+                 subject1.setModel(new javax.swing.DefaultComboBoxModel<>(sarr11));
+                 subject2.setModel(new javax.swing.DefaultComboBoxModel<>(sarr11));
+                 subject3.setModel(new javax.swing.DefaultComboBoxModel<>(sarr11));
+                 subject4.setModel(new javax.swing.DefaultComboBoxModel<>(sarr11));
+                 subject5.setModel(new javax.swing.DefaultComboBoxModel<>(sarr11));
+                 subject6.setModel(new javax.swing.DefaultComboBoxModel<>(sarr11));
+      }else if(selectedClass.equals("12A") || selectedClass.equals("12B")){
+                 subject1.setModel(new javax.swing.DefaultComboBoxModel<>(sarr12));
+                 subject2.setModel(new javax.swing.DefaultComboBoxModel<>(sarr12));
+                 subject3.setModel(new javax.swing.DefaultComboBoxModel<>(sarr12));
+                 subject4.setModel(new javax.swing.DefaultComboBoxModel<>(sarr12));
+                 subject5.setModel(new javax.swing.DefaultComboBoxModel<>(sarr12));
+                 subject6.setModel(new javax.swing.DefaultComboBoxModel<>(sarr12));  
+       }
+       subject1.setSelectedItem(courseToUpdate.getSub1());
+subject2.setSelectedItem(courseToUpdate.getSub2());
+subject3.setSelectedItem(courseToUpdate.getSub3());
+subject4.setSelectedItem(courseToUpdate.getSub4());
+subject5.setSelectedItem(courseToUpdate.getSub5());
+subject6.setSelectedItem(courseToUpdate.getSub6());         
+}
+    boolean checksubject(String subject1, String subject2, String subject3, String subject4, String subject5, String subject6 ){
            String s = "Select Subject";
            if(subject1.equals(s) || subject2.equals(s)|| subject3.equals(s) || subject4.equals(s) || subject5.equals(s) || subject6.equals(s)){
                   return false;
@@ -69,6 +102,7 @@ boolean checksubject(String subject1, String subject2, String subject3, String s
                 subject2ActionPerformed(evt);
             }
         });
+        subject2.setSelectedItem(courseToUpdate.getSub2());
 
         subject3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Subject" }));
         subject3.setToolTipText("");
@@ -77,7 +111,7 @@ boolean checksubject(String subject1, String subject2, String subject3, String s
                 subject3ActionPerformed(evt);
             }
         });
-
+        subject3.setSelectedItem(courseToUpdate.getSub3());
         subject4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Subject" }));
         subject4.setToolTipText("");
         subject4.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +119,7 @@ boolean checksubject(String subject1, String subject2, String subject3, String s
                 subject4ActionPerformed(evt);
             }
         });
-
+        subject2.setSelectedItem(courseToUpdate.getSub4());
         subject5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Subject" }));
         subject5.setToolTipText("");
         subject5.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +127,7 @@ boolean checksubject(String subject1, String subject2, String subject3, String s
                 subject5ActionPerformed(evt);
             }
         });
-
+        subject5.setSelectedItem(courseToUpdate.getSub5());
         subject6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Subject" }));
         subject6.setToolTipText("");
         subject6.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +135,7 @@ boolean checksubject(String subject1, String subject2, String subject3, String s
                 subject6ActionPerformed(evt);
             }
         });
+        subject6.setSelectedItem(courseToUpdate.getSub6());
 
         subject1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Subject" }));
         subject1.setToolTipText("");
@@ -109,6 +144,7 @@ boolean checksubject(String subject1, String subject2, String subject3, String s
                 subject1ActionPerformed(evt);
             }
         });
+        subject1.setSelectedItem(courseToUpdate.getSub1());
 
         addCourse.setText("Update Course");
         addCourse.addActionListener(new java.awt.event.ActionListener() {
@@ -313,12 +349,27 @@ boolean checksubject(String subject1, String subject2, String subject3, String s
             JOptionPane.showMessageDialog(null, "Please select the subject!");
             return;
         }
-        JOptionPane.showMessageDialog(null, "Course Successfully Updated");
-        CourseTask ct = new CourseTask();
-        ct.setVisible(true);
-        this.dispose();
 
-        //course
+        CourseData updatedcourse = new CourseData();
+        updatedcourse.setClassName(courseToUpdate.getClassName());
+        updatedcourse.setSub1(ss1);
+        updatedcourse.setSub2(ss2);
+        updatedcourse.setSub3(ss3);
+        updatedcourse.setSub4(ss4);
+        updatedcourse.setSub5(ss5);
+        updatedcourse.setSub6(ss6);
+        if(CourseData.update(updatedcourse)){
+            JOptionPane.showMessageDialog(this,"Successfully updated course.");
+            dispose();
+            CourseTask tk = new CourseTask();
+            tk.setVisible(true);
+            this.dispose();
+        }else {
+            JOptionPane.showMessageDialog(this,"Failed to add course, please try again later.");
+            return;
+        }
+
+       //course
     }//GEN-LAST:event_addCourseActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
@@ -358,7 +409,7 @@ boolean checksubject(String subject1, String subject2, String subject3, String s
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UpdateCourse().setVisible(true);
+                new UpdateCourse(new CourseData()).setVisible(true);
             }
         });
     }

@@ -97,6 +97,7 @@ public class AddStudent extends javax.swing.JFrame {
         try {
             Date date = sdf.parse(dateToValidate);
         } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Please provide date in format dd/MM/yyyy");
             return false;
         }
         return true;

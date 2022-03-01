@@ -1,5 +1,6 @@
 package studentManagement;
 
+import common.Validator;
 import javax.swing.JOptionPane;
 import pojo.StudentData;
 
@@ -32,6 +33,15 @@ public class updateStudent extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "First Name cannot be empty!");
             return  false;
         }
+        if(!Validator.isAlphabet(fname)){
+            JOptionPane.showMessageDialog(this,"First name should only contain alphabets.");
+            return false;
+        }
+
+        if(fname.length() < 1 || fname.length() > 20){
+            JOptionPane.showMessageDialog(this,"First name should have min 2 and max 20 characters.");
+            return false;
+        }
         return true;
     }
     boolean isValidLName(String lname){
@@ -39,8 +49,19 @@ public class updateStudent extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Last Name cannot be empty!");
             return false;
         }
+
+        if(!Validator.isAlphabet(lname)){
+            JOptionPane.showMessageDialog(this,"Last name should only contain alphabets.");
+            return false;
+        }
+
+        if(lname.length() < 1 || lname.length() > 20){
+            JOptionPane.showMessageDialog(this,"Last name should have min 2 and max 20 characters.");
+            return false;
+        }
         return true;
     }
+
     boolean isValidDate(String dateToValidate){
         if(dateToValidate.isEmpty()){
             JOptionPane.showMessageDialog(null, "Date cannot be empty!");
@@ -56,19 +77,40 @@ public class updateStudent extends javax.swing.JFrame {
             return false;
         }
         return true;
-
+        
     }
-
-    boolean isValidFatherName(String fname){
-        if(fname.isEmpty()){
+    
+    boolean isValidFatherName(String fathername){
+        if(fathername.isEmpty()){
             JOptionPane.showMessageDialog(null, "Father's name cannot be empty!");
             return false;
         }
+
+        if(!Validator.isAlphabet(fathername)){
+            JOptionPane.showMessageDialog(this,"Father's name should only contain alphabets.");
+            return false;
+        }
+
+        if(fathername.length() < 1 || fathername.length() > 30){
+            JOptionPane.showMessageDialog(this,"Father's name should have min 2 and max 30 characters.");
+            return false;
+        }
+
         return true;
     }
     boolean isValidMotherName(String mname){
         if(mname.isEmpty()){
             JOptionPane.showMessageDialog(null, "Mother's name cannot be empty!");
+            return false;
+        }
+
+        if(!Validator.isAlphabet(mname)){
+            JOptionPane.showMessageDialog(this,"Mother's name should only contain alphabets.");
+            return false;
+        }
+
+        if(mname.length() < 1 || mname.length() > 30){
+            JOptionPane.showMessageDialog(this,"Mother's name should have min 2 and max 30 characters.");
             return false;
         }
         return true;
@@ -78,22 +120,58 @@ public class updateStudent extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Telephone number cannot be empty!");
             return false;
         }
+        if(!Validator.isNumeric(tnum)){
+            JOptionPane.showMessageDialog(this,"Telephone number should contain only numeric values.");
+            return false;
+        }
+
+        if(!tnum.startsWith("0")){
+            JOptionPane.showMessageDialog(this,"Telephone number should start with 0.");
+            return false;
+        }
+
+        if(tnum.length() != 11){
+            JOptionPane.showMessageDialog(this,"Please provide valid telephone number.");
+            return false;
+        }
         return true;
     }
+
     boolean isValidMobileNum(String mnum){
         if(mnum.isEmpty()){
             JOptionPane.showMessageDialog(null, "Mobile number cannot be empty!");
             return false;
         }
+
+        if(!Validator.isNumeric(mnum)){
+            JOptionPane.showMessageDialog(this,"Mobile number should contain only numeric values.");
+            return false;
+        }
+
+        if(mnum.length() != 10){
+            JOptionPane.showMessageDialog(this,"Please provide valid Mobile number.");
+            return false;
+        }
+
         return true;
     }
-    boolean isValidAddress(String Address){
-        if(Address.isEmpty()){
+    boolean isValidAddress(String address){
+        if(address.isEmpty()){
             JOptionPane.showMessageDialog(null, "Address cannot be empty!");
+            return false;
+        }
+        if(!Validator.isAlphaNumeric(address)){
+            JOptionPane.showMessageDialog(this,"Address should contain only alphabets and numeric values.");
+            return false;
+        }
+
+        if(address.length() < 10 || address.length() > 250){
+            JOptionPane.showMessageDialog(this,"Address should have min 10 and max 250 characters.");
             return false;
         }
         return true;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

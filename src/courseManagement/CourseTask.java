@@ -4,7 +4,7 @@ package courseManagement;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-import studentManagementSystem.Menu;
+import login.Menu;
 
 /**
  *
@@ -127,6 +127,8 @@ public class CourseTask extends javax.swing.JFrame {
 
     private void viewClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewClassActionPerformed
         // TODO add your handling code here:
+        ViewAllCourseDetails view = new ViewAllCourseDetails();
+        view.setVisible(true);
     }//GEN-LAST:event_viewClassActionPerformed
 
     private void deleteClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteClassActionPerformed

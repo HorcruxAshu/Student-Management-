@@ -1,5 +1,7 @@
 package courseManagement;
 
+import pojo.CourseData;
+
 import javax.swing.JOptionPane;
 
 /*
@@ -127,18 +129,30 @@ return true;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
          // TODO add your handling code here:
-          String s = "Select Class";
-          String s2 = dclass.getSelectedItem().toString();
-          if(s2.equals(s)){
+          String defaultClass = "Select Class";
+          String selectedClass = dclass.getSelectedItem().toString();
+          if(selectedClass.equals(defaultClass)){
           JOptionPane.showMessageDialog(null, "Please select class!");
           return;
                
           }
-           
-          JOptionPane.showMessageDialog(null, "Successfully deleted");
-          CourseTask ct2 = new CourseTask();
-          ct2.setVisible(true);
-          this.dispose();
+          CourseData courseToDelete = CourseData.getCourseDetailsByName(selectedClass);
+          if(courseToDelete == null) {
+              JOptionPane.showMessageDialog(this,"Failed to load selected course details");
+              return;
+          }
+
+          if(CourseData.delete(courseToDelete)){
+              JOptionPane.showMessageDialog(this,"Successfully deleted course details.");
+              dispose();
+              CourseTask tk = new CourseTask();
+              tk.setVisible(true);
+              this.dispose();
+          }else {
+              JOptionPane.showMessageDialog(this,"Failed to delete course details, please try again later.");
+              return;
+          }
+
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

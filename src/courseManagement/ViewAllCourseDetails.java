@@ -1,5 +1,7 @@
-package studentManagementSystem;
+package courseManagement;
 
+import pojo.CourseData;
+import pojo.CourseTableModel;
 import pojo.StudentData;
 import pojo.StudentTableModel;
 
@@ -8,20 +10,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class ViewAllStudents extends JFrame implements ActionListener {
+public class ViewAllCourseDetails extends JFrame implements ActionListener {
 
-    StudentTableModel tableModel = new StudentTableModel();
-    public ViewAllStudents(){
+    CourseTableModel tableModel = new CourseTableModel();
+    public ViewAllCourseDetails(){
         //setLayout(null);
         setVisible(true);
         setSize(1000,700);
-        setTitle("Student Details");
+        setTitle("Course Details");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        List<StudentData> rows = StudentData.getAllStudents();
+        List<CourseData> rows = CourseData.getAllCourseDetails();
         JTable table =new JTable();
         table.setBounds(50,100,1000,400);
-        tableModel.setStudentList(rows);
+        tableModel.setCourseList(rows);
         table.setModel(tableModel);
         add(new JScrollPane(table));
 

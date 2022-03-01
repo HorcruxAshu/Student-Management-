@@ -1,5 +1,7 @@
 package courseManagement;
 
+import pojo.CourseData;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -57,10 +59,7 @@ public class AddCourse extends javax.swing.JFrame {
         map1.put("11B",arraylist1);
         map1.put("12A",arraylist2);
         map1.put("12B",arraylist2);
-        
-        
-        
-        
+
     }
 
     boolean checksubject(String subject1, String subject2, String subject3, String subject4, String subject5, String subject6 ){
@@ -69,7 +68,7 @@ public class AddCourse extends javax.swing.JFrame {
                   return false;
            }
            return true;
-}
+    }
 
 
     /**
@@ -286,6 +285,16 @@ public class AddCourse extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_backActionPerformed
 
+    private void resetFields(){
+        cclass.setSelectedIndex(0);
+        subject1.setSelectedIndex(0);
+        subject2.setSelectedIndex(0);
+        subject3.setSelectedIndex(0);
+        subject4.setSelectedIndex(0);
+        subject5.setSelectedIndex(0);
+        subject6.setSelectedIndex(0);
+    }
+
     private void addCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCourseActionPerformed
         // TODO add your handling code here:
         String ss1 = subject1.getSelectedItem().toString();
@@ -297,13 +306,34 @@ public class AddCourse extends javax.swing.JFrame {
         if(!(checksubject(ss1, ss2, ss3, ss4, ss5, ss6))){
             JOptionPane.showMessageDialog(null, "Please select the subject!");
             return;
-}
-        JOptionPane.showMessageDialog(null, "Course Successfully Added");
-        CourseTask ct = new CourseTask();
-        ct.setVisible(true);
-        this.dispose();
+        }
 
-        //course
+        String selectedClass = cclass.getSelectedItem().toString();
+        if(CourseData.getAllClasses().contains(selectedClass)){
+            JOptionPane.showMessageDialog(this,"Course details for class " + selectedClass + " already exists.");
+            return;
+        }
+
+        CourseData course = new CourseData();
+        course.setClassName(selectedClass);
+        course.setSub1(ss1);
+        course.setSub2(ss2);
+        course.setSub3(ss3);
+        course.setSub4(ss4);
+        course.setSub5(ss5);
+        course.setSub6(ss6);
+
+        if(CourseData.add(course)){
+            JOptionPane.showMessageDialog(this,"Successfully added course details.");
+            CourseTask ct = new CourseTask();
+            ct.setVisible(true);
+            this.dispose();
+        }else {
+            JOptionPane.showMessageDialog(this,"Failed to add course detaisl, please try again later.");
+            resetFields();
+            return;
+        }
+
     }//GEN-LAST:event_addCourseActionPerformed
 
     private void subject1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject1ActionPerformed

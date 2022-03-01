@@ -142,7 +142,7 @@ public class StudentData {
     public static boolean add(StudentData newStudent){
         String studentData = mapStudentModelToString(newStudent);
 
-        if(!FileOperations.saveData(Constants.STUDENT_DATA, studentData.toString())){
+        if(!FileOperations.saveData(Constants.STUDENT_DATA, studentData)){
             return false;
         }
         return true;
@@ -163,7 +163,7 @@ public class StudentData {
             FileOperations.renameFile(Constants.STUDENT_DATA, "StudentData_Temp.txt");
         } catch (Exception ex){
             // log an exception
-            System.out.println("exception while updating books data - " + ex);
+            System.out.println("exception while updating student data - " + ex);
             return false;
         }
         return  true;

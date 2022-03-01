@@ -1,0 +1,2 @@
+11A,English A - Language and Literature,Hindi B HL,Biology HL,Physics HL,Chemistry HL,Computer Science HL,
+12A,English A - Language and Literature,Hindi B SL,Biology SL,Physics SL,Chemistry SL,Math SL,

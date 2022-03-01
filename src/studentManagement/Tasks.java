@@ -1,7 +1,9 @@
-package studentManagementSystem;/*
+package studentManagement;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to EditStudent this template
  */
+
+import login.Menu;
 
 /**
  *

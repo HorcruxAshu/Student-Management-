@@ -1,4 +1,4 @@
-package studentManagementSystem;
+package login;
 
 import java.util.*;
 import javax.swing.JOptionPane;
@@ -39,6 +39,9 @@ public class login extends javax.swing.JFrame {
         }
         else {
             JOptionPane.showMessageDialog(null, "Username is not registered in the system!");
+            Register r1 = new Register();
+            r1.setVisible(true);
+            this.dispose();
             return false;
         }
     }

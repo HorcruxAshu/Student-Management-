@@ -1,4 +1,4 @@
-package studentManagementSystem;
+package studentManagement;
 
 import javax.swing.JOptionPane;
 import pojo.StudentData;

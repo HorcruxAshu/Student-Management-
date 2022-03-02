@@ -4,11 +4,19 @@
  */
 package examManagement;
 
+import courseManagement.CourseTask;
+import pojo.CourseData;
+import pojo.ExamData;
+import pojo.StudentData;
+
+import javax.swing.*;
+
 /**
  *
  * @author DM
  */
 public class examAddData extends javax.swing.JFrame {
+
 
     /**
      * Creates new form examAddData
@@ -32,9 +40,6 @@ public class examAddData extends javax.swing.JFrame {
         sub5m.setText("");
         sub6.setText("");
         sub6m.setText("");
-
-             
-
    }
 
 
@@ -168,6 +173,11 @@ public class examAddData extends javax.swing.JFrame {
         jLabel16.setText("Subject 6");
 
         examAdd.setText("Add");
+        examAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                examAddActionPerformed(evt);
+            }
+        });
 
         examClear.setText("Clear");
         examClear.addActionListener(new java.awt.event.ActionListener() {
@@ -324,12 +334,42 @@ public class examAddData extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
+    private void loadSubjectsDataForStudent(String rollNumber){
+        StudentData data = StudentData.getStudentByRollNo(rollNumber);
+        if(data == null ){
+            JOptionPane.showMessageDialog(null, "Student with roll number "+ rollNumber + " does not exists");
+            return;
+        }
+        String classStandard  = data.getClassStandard();
+        CourseData courseDetails = CourseData.getCourseDetailsByName(classStandard);
+        if(courseDetails == null){
+            JOptionPane.showMessageDialog(null, "Subject details are not registered for class "+ classStandard);
+            return;
+        }
+        edataclass.setSelectedItem(classStandard);
+        sub1.setText(courseDetails.getSub1());
+        sub1.setEditable(false);
+        sub2.setText(courseDetails.getSub2());
+        sub2.setEditable(false);
+        sub3.setText(courseDetails.getSub3());
+        sub3.setEditable(false);
+        sub4.setText(courseDetails.getSub4());
+        sub4.setEditable(false);
+        sub5.setText(courseDetails.getSub5());
+        sub5.setEditable(false);
+        sub6.setText(courseDetails.getSub6());
+        sub6.setEditable(false);
+    }
+
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void erollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_erollActionPerformed
         // TODO add your handling code here:
+
+        loadSubjectsDataForStudent(eroll.getText());
 
     }//GEN-LAST:event_erollActionPerformed
 
@@ -367,6 +407,41 @@ public class examAddData extends javax.swing.JFrame {
         // TODO add your handling code here:
         clearFields();
     }//GEN-LAST:event_examClearActionPerformed
+
+    private void examAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_examAddActionPerformed
+        // TODO add your handling code here:
+       loadSubjectsDataForStudent(eroll.getText());
+
+        ExamData examDetails = new ExamData();
+        examDetails.setStudRollNum(eroll.getText());
+        examDetails.setClassName(edataclass.getSelectedItem().toString());
+        examDetails.setTestName(jTextField2.getText());
+        examDetails.setSub1Name(sub1.getText());
+        examDetails.setSub1Score(sub1m.getText());
+        examDetails.setSub2Name(sub2.getText());
+        examDetails.setSub2Score(sub2m.getText());
+        examDetails.setSub3Name(sub3.getText());
+        examDetails.setSub3Score(sub3m.getText());
+        examDetails.setSub4Name(sub4.getText());
+        examDetails.setSub4Score(sub4m.getText());
+        examDetails.setSub5Name(sub5.getText());
+        examDetails.setSub5Score(sub5m.getText());
+        examDetails.setSub6Name(sub6.getText());
+        examDetails.setSub6Score(sub6m.getText());
+
+        if(ExamData.add(examDetails)){
+            JOptionPane.showMessageDialog(this,"Successfully added exam details.");
+            CourseTask ct = new CourseTask();
+            ct.setVisible(true);
+            this.dispose();
+        }else {
+            JOptionPane.showMessageDialog(this,"Failed to add exam details, please try again later.");
+            clearFields();
+            return;
+        }
+
+
+    }//GEN-LAST:event_examAddActionPerformed
 
     /**
      * @param args the command line arguments

@@ -36,7 +36,7 @@ public class UpdateCourse extends javax.swing.JFrame {
         System.out.print(courseToUpdate.getClassName());
         selectedClass = courseToUpdate.getClassName();
         initComponents();
-loadSubjectData(selectedClass);
+        loadSubjectData(selectedClass);
        
     }
     void loadSubjectData(String selectedClass){
@@ -56,11 +56,11 @@ loadSubjectData(selectedClass);
                  subject6.setModel(new javax.swing.DefaultComboBoxModel<>(sarr12));  
        }
        subject1.setSelectedItem(courseToUpdate.getSub1());
-subject2.setSelectedItem(courseToUpdate.getSub2());
-subject3.setSelectedItem(courseToUpdate.getSub3());
-subject4.setSelectedItem(courseToUpdate.getSub4());
-subject5.setSelectedItem(courseToUpdate.getSub5());
-subject6.setSelectedItem(courseToUpdate.getSub6());         
+       subject2.setSelectedItem(courseToUpdate.getSub2());
+       subject3.setSelectedItem(courseToUpdate.getSub3());
+       subject4.setSelectedItem(courseToUpdate.getSub4());
+       subject5.setSelectedItem(courseToUpdate.getSub5());
+       subject6.setSelectedItem(courseToUpdate.getSub6());
 }
     boolean checksubject(String subject1, String subject2, String subject3, String subject4, String subject5, String subject6 ){
            String s = "Select Subject";

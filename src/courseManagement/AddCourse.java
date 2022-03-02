@@ -329,7 +329,7 @@ public class AddCourse extends javax.swing.JFrame {
             ct.setVisible(true);
             this.dispose();
         }else {
-            JOptionPane.showMessageDialog(this,"Failed to add course detaisl, please try again later.");
+            JOptionPane.showMessageDialog(this,"Failed to add course details, please try again later.");
             resetFields();
             return;
         }

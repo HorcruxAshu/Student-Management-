@@ -272,7 +272,6 @@ public class ExamData {
         data.append(examDetails.getSub6Name());
         data.append(Constants.SEPARATOR);
         data.append(examDetails.getSub6Score());
-        data.append(Constants.SEPARATOR);
         data.append("\r\n");
         return data.toString();
     }

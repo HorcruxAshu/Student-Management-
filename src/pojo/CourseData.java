@@ -182,7 +182,6 @@ public class CourseData {
         data.append(course.getSub5());
         data.append(Constants.SEPARATOR);
         data.append(course.getSub6());
-        data.append(Constants.SEPARATOR);
         data.append("\r\n");
         return data.toString();
     }

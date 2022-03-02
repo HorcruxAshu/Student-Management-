@@ -27,7 +27,8 @@ public class examAddData extends javax.swing.JFrame {
 
     private void clearFields(){
         eroll.setText("");
-        edataclass.setSelectedIndex(0);
+        edataclass.setText("");
+        jTextField2.setText("");
         sub1.setText("");
         sub1m.setText("");
         sub2.setText("");
@@ -40,6 +41,12 @@ public class examAddData extends javax.swing.JFrame {
         sub5m.setText("");
         sub6.setText("");
         sub6m.setText("");
+   }
+   boolean checkMarks(String sub1m, String sub2m, String sub3m, String sub4m, String sub5m, String sub6m, String tesId){
+                   if(sub1m.isEmpty() ||sub2m.isEmpty() ||sub3m.isEmpty() ||sub4m.isEmpty() ||sub5m.isEmpty() ||sub6m.isEmpty() || tesId.isEmpty()){
+                             return false;
+                   }
+                   return true;
    }
 
 
@@ -55,7 +62,6 @@ public class examAddData extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         eroll = new javax.swing.JTextField();
-        edataclass = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
@@ -86,6 +92,8 @@ public class examAddData extends javax.swing.JFrame {
         examAdd = new javax.swing.JButton();
         examClear = new javax.swing.JButton();
         back = new javax.swing.JButton();
+        edataclass = new javax.swing.JTextField();
+        examLoad = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,8 +107,11 @@ public class examAddData extends javax.swing.JFrame {
                 erollActionPerformed(evt);
             }
         });
-
-        edataclass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Class" }));
+        eroll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                erollKeyPressed(evt);
+            }
+        });
 
         jLabel3.setText("Class");
 
@@ -122,6 +133,17 @@ public class examAddData extends javax.swing.JFrame {
 
         jLabel6.setText("Subject 1 Marks");
 
+        sub1m.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sub1mActionPerformed(evt);
+            }
+        });
+        sub1m.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                sub1mKeyPressed(evt);
+            }
+        });
+
         sub2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sub2ActionPerformed(evt);
@@ -131,6 +153,12 @@ public class examAddData extends javax.swing.JFrame {
         jLabel7.setText("Subject 2");
 
         jLabel8.setText("Subject 2 Marks");
+
+        sub2m.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                sub2mKeyPressed(evt);
+            }
+        });
 
         sub3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,6 +170,17 @@ public class examAddData extends javax.swing.JFrame {
 
         jLabel10.setText("Subject 3 Marks");
 
+        sub3m.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sub3mActionPerformed(evt);
+            }
+        });
+        sub3m.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                sub3mKeyPressed(evt);
+            }
+        });
+
         sub4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sub4ActionPerformed(evt);
@@ -152,7 +191,19 @@ public class examAddData extends javax.swing.JFrame {
 
         jLabel12.setText("Subject 4 Marks");
 
+        sub4m.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                sub4mKeyPressed(evt);
+            }
+        });
+
         jLabel13.setText("Subject 5 Marks");
+
+        sub5m.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                sub5mKeyPressed(evt);
+            }
+        });
 
         sub5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,6 +214,17 @@ public class examAddData extends javax.swing.JFrame {
         jLabel14.setText("Subject 5");
 
         jLabel15.setText("Subject 6 Marks");
+
+        sub6m.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sub6mActionPerformed(evt);
+            }
+        });
+        sub6m.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                sub6mKeyPressed(evt);
+            }
+        });
 
         sub6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,73 +249,96 @@ public class examAddData extends javax.swing.JFrame {
         });
 
         back.setText("Back");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
+
+        edataclass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edataclassActionPerformed(evt);
+            }
+        });
+
+        examLoad.setText("Load");
+        examLoad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                examLoadActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(80, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(sub3, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sub3m, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sub4, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sub4m, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sub5, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sub5m, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(sub2m, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sub2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(sub6, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sub6m, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(examAdd)
-                                .addGap(26, 26, 26)
-                                .addComponent(examClear)
-                                .addGap(26, 26, 26)
-                                .addComponent(back))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sub1m, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sub1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(eroll, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(edataclass, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(69, 69, 69))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(examAdd)
+                            .addGap(37, 37, 37)
+                            .addComponent(examClear)
+                            .addGap(40, 40, 40)
+                            .addComponent(back)
+                            .addGap(180, 180, 180))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(sub1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                                .addComponent(sub1m)
+                                .addComponent(eroll)
+                                .addComponent(edataclass)
+                                .addComponent(jTextField2))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(examLoad)
+                            .addContainerGap())
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel8))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(sub2, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                                .addComponent(sub2m))
+                            .addGap(103, 103, 103))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel10)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel12)
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(sub5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                                .addComponent(sub4m, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(sub4, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(sub3m, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(sub3)
+                                .addComponent(sub5m))
+                            .addContainerGap())
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(sub6)
+                                .addComponent(sub6m))
+                            .addGap(103, 103, 103)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(114, 114, 114))))
+                        .addGap(157, 157, 157))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,11 +348,12 @@ public class examAddData extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eroll, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(examLoad))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(edataclass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edataclass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -347,7 +433,8 @@ public class examAddData extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Subject details are not registered for class "+ classStandard);
             return;
         }
-        edataclass.setSelectedItem(classStandard);
+        edataclass.setText(classStandard);
+        edataclass.setEditable(false);
         sub1.setText(courseDetails.getSub1());
         sub1.setEditable(false);
         sub2.setText(courseDetails.getSub2());
@@ -367,8 +454,8 @@ public class examAddData extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void erollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_erollActionPerformed
-        // TODO add your handling code here:
-
+         // TODO add your handling code here: 
+        
         loadSubjectsDataForStudent(eroll.getText());
 
     }//GEN-LAST:event_erollActionPerformed
@@ -410,11 +497,11 @@ public class examAddData extends javax.swing.JFrame {
 
     private void examAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_examAddActionPerformed
         // TODO add your handling code here:
-       loadSubjectsDataForStudent(eroll.getText());
+        
 
         ExamData examDetails = new ExamData();
         examDetails.setStudRollNum(eroll.getText());
-        examDetails.setClassName(edataclass.getSelectedItem().toString());
+        examDetails.setClassName(edataclass.getText());
         examDetails.setTestName(jTextField2.getText());
         examDetails.setSub1Name(sub1.getText());
         examDetails.setSub1Score(sub1m.getText());
@@ -429,9 +516,20 @@ public class examAddData extends javax.swing.JFrame {
         examDetails.setSub6Name(sub6.getText());
         examDetails.setSub6Score(sub6m.getText());
 
+        if(!(checkMarks(sub1m.getText(),sub2m.getText(),sub3m.getText(),sub4m.getText(),sub5m.getText(),sub6m.getText(),jTextField2.getText()))){
+                       if(jTextField2.getText().isEmpty()){
+                       JOptionPane.showMessageDialog(null, "Please enter Test ID!");
+                       return;
+}else{
+          JOptionPane.showMessageDialog(null, "Please enter marks for all subjects!");
+                       return;
+
+}
+                       
+        }
         if(ExamData.add(examDetails)){
             JOptionPane.showMessageDialog(this,"Successfully added exam details.");
-            CourseTask ct = new CourseTask();
+            examMenu ct = new examMenu();
             ct.setVisible(true);
             this.dispose();
         }else {
@@ -442,6 +540,123 @@ public class examAddData extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_examAddActionPerformed
+
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        // TODO add your handling code here:
+        examMenu em = new examMenu();
+        em.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backActionPerformed
+
+    private void examLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_examLoadActionPerformed
+        // TODO add your handling code here:
+        
+        loadSubjectsDataForStudent(eroll.getText());
+        
+    }//GEN-LAST:event_examLoadActionPerformed
+
+    private void erollKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_erollKeyPressed
+        // TODO add your handling code here:
+        Character c = evt.getKeyChar();
+        
+        if((c >= '0' && c<= '9' || c == 8)){
+                eroll.setEditable(true);
+                
+        }else{
+              eroll.setEditable(false);
+}
+    }//GEN-LAST:event_erollKeyPressed
+
+    private void sub1mActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sub1mActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sub1mActionPerformed
+
+    private void edataclassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edataclassActionPerformed
+        // TODO add your handling code here:
+          edataclass.setEditable(false);
+    }//GEN-LAST:event_edataclassActionPerformed
+
+    private void sub1mKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sub1mKeyPressed
+        // TODO add your handling code here:
+        Character c = evt.getKeyChar();
+        
+        if(((c >= '0' && c<= '9') )|| c== 8){
+                sub1m.setEditable(true);
+                
+        }else{
+              sub1m.setEditable(false);
+        }
+    }//GEN-LAST:event_sub1mKeyPressed
+
+    private void sub2mKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sub2mKeyPressed
+        // TODO add your handling code here:
+        
+        Character c = evt.getKeyChar();
+        
+        if(((c >= '0' && c<= '9') )|| c== 8){
+                sub2m.setEditable(true);
+                
+        }else{
+              sub2m.setEditable(false);
+        }
+    }//GEN-LAST:event_sub2mKeyPressed
+
+    private void sub3mActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sub3mActionPerformed
+        // TODO add your handling code here:
+         
+    }//GEN-LAST:event_sub3mActionPerformed
+
+    private void sub3mKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sub3mKeyPressed
+        // TODO add your handling code here
+       Character c = evt.getKeyChar();
+        
+        if(((c >= '0' && c<= '9') )|| c== 8){
+                sub3m.setEditable(true);
+                
+        }else{
+              sub3m.setEditable(false);
+        }
+    }//GEN-LAST:event_sub3mKeyPressed
+
+    private void sub4mKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sub4mKeyPressed
+        // TODO add your handling code here:
+        Character c = evt.getKeyChar();
+        
+        if(((c >= '0' && c<= '9') )|| c== 8){
+                sub4m.setEditable(true);
+                
+        }else{
+              sub4m.setEditable(false);
+        }
+    }//GEN-LAST:event_sub4mKeyPressed
+
+    private void sub5mKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sub5mKeyPressed
+        // TODO add your handling code here:
+        Character c = evt.getKeyChar();
+        
+        if(((c >= '0' && c<= '9') )|| c== 8){
+                sub5m.setEditable(true);
+                
+        }else{
+              sub5m.setEditable(false);
+        }
+    }//GEN-LAST:event_sub5mKeyPressed
+
+    private void sub6mActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sub6mActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sub6mActionPerformed
+
+    private void sub6mKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sub6mKeyPressed
+        // TODO add your handling code here:
+       Character c = evt.getKeyChar();
+        
+        if(((c >= '0' && c<= '9') )|| c== 8){
+                sub6m.setEditable(true);
+                
+        }else{
+              sub6m.setEditable(false);
+        }
+    }//GEN-LAST:event_sub6mKeyPressed
 
     /**
      * @param args the command line arguments
@@ -480,10 +695,11 @@ public class examAddData extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
-    private javax.swing.JComboBox<String> edataclass;
+    private javax.swing.JTextField edataclass;
     private javax.swing.JTextField eroll;
     private javax.swing.JButton examAdd;
     private javax.swing.JButton examClear;
+    private javax.swing.JButton examLoad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

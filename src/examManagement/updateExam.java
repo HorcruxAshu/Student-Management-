@@ -26,6 +26,28 @@ public class updateExam extends javax.swing.JFrame {
 
     private void loadExamDetails(){
         edataclass.setText(detailsToUpdate.getClassName());
+        edataclass.setEnabled(false);
+        jTextField2.setText(detailsToUpdate.getTestName());
+        jTextField2.setEnabled(false);
+        sub1.setText(detailsToUpdate.getSub1Name());
+        sub1.setEnabled(false);
+        sub1m.setText(detailsToUpdate.getSub1Score());
+        sub2.setText(detailsToUpdate.getSub2Name());
+        sub2.setEnabled(false);
+        sub2m.setText(detailsToUpdate.getSub2Score());
+        sub3.setText(detailsToUpdate.getSub3Name());
+        sub3.setEnabled(false);
+        sub3m.setText(detailsToUpdate.getSub3Score());
+        sub4.setText(detailsToUpdate.getSub4Name());
+        sub4.setEnabled(false);
+        sub4m.setText(detailsToUpdate.getSub4Score());
+        sub5.setText(detailsToUpdate.getSub5Name());
+        sub5.setEnabled(false);
+        sub5m.setText(detailsToUpdate.getSub5Score());
+        sub6.setText(detailsToUpdate.getSub6Name());
+        sub6.setEnabled(false);
+        sub6m.setText(detailsToUpdate.getSub6Score());
+
     }
     boolean checkMarks(String sub1m, String sub2m, String sub3m, String sub4m, String sub5m, String sub6m, String tesId){
                    if(sub1m.isEmpty() ||sub2m.isEmpty() ||sub3m.isEmpty() ||sub4m.isEmpty() ||sub5m.isEmpty() ||sub6m.isEmpty() || tesId.isEmpty()){
@@ -68,7 +90,7 @@ public class updateExam extends javax.swing.JFrame {
         sub3m = new javax.swing.JTextField();
         sub4 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        examAdd = new javax.swing.JButton();
+        examUpdate = new javax.swing.JButton();
         examClear = new javax.swing.JButton();
         back = new javax.swing.JButton();
         edataclass = new javax.swing.JTextField();
@@ -147,10 +169,10 @@ public class updateExam extends javax.swing.JFrame {
 
         jLabel16.setText("Subject 6");
 
-        examAdd.setText("Update");
-        examAdd.addActionListener(new java.awt.event.ActionListener() {
+        examUpdate.setText("Update");
+        examUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                examAddActionPerformed(evt);
+                examUpdateActionPerformed(evt);
             }
         });
 
@@ -249,7 +271,7 @@ public class updateExam extends javax.swing.JFrame {
                     .addGap(30, 30, 30)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(examAdd)
+                            .addComponent(examUpdate)
                             .addGap(37, 37, 37)
                             .addComponent(examClear)
                             .addGap(40, 40, 40)
@@ -368,7 +390,7 @@ public class updateExam extends javax.swing.JFrame {
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(examAdd)
+                        .addComponent(examUpdate)
                         .addComponent(examClear)
                         .addComponent(back))
                     .addContainerGap()))
@@ -438,10 +460,22 @@ public class updateExam extends javax.swing.JFrame {
         sub4.setEditable(false);
     }//GEN-LAST:event_sub4ActionPerformed
 
-    private void examAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_examAddActionPerformed
+    private void examUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_examUpdateActionPerformed
         // TODO add your handling code here:
 
+        if(!(checkMarks(sub1m.getText(),sub2m.getText(),sub3m.getText(),sub4m.getText(),sub5m.getText(),sub6m.getText(),jTextField2.getText()))){
+            if(jTextField2.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Please enter Test ID!");
+                return;
+            }else{
+                JOptionPane.showMessageDialog(null, "Please enter marks for all subjects!");
+                return;
+
+            }
+        }
+
         ExamData examDetails = new ExamData();
+        examDetails.setStudRollNum(detailsToUpdate.getStudRollNum());
         examDetails.setClassName(edataclass.getText());
         examDetails.setTestName(jTextField2.getText());
         examDetails.setSub1Name(sub1.getText());
@@ -457,18 +491,7 @@ public class updateExam extends javax.swing.JFrame {
         examDetails.setSub6Name(sub6.getText());
         examDetails.setSub6Score(sub6m.getText());
 
-        if(!(checkMarks(sub1m.getText(),sub2m.getText(),sub3m.getText(),sub4m.getText(),sub5m.getText(),sub6m.getText(),jTextField2.getText()))){
-            if(jTextField2.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null, "Please enter Test ID!");
-                return;
-            }else{
-                JOptionPane.showMessageDialog(null, "Please enter marks for all subjects!");
-                return;
-
-            }
-
-        }
-        if(ExamData.add(examDetails)){
+        if(ExamData.update(examDetails)){
             JOptionPane.showMessageDialog(this,"Successfully added exam details.");
             examMenu ct = new examMenu();
             ct.setVisible(true);
@@ -479,7 +502,7 @@ public class updateExam extends javax.swing.JFrame {
             return;
         }
 
-    }//GEN-LAST:event_examAddActionPerformed
+    }//GEN-LAST:event_examUpdateActionPerformed
 
     private void examClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_examClearActionPerformed
         // TODO add your handling code here:
@@ -595,7 +618,7 @@ public class updateExam extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
     private javax.swing.JTextField edataclass;
-    private javax.swing.JButton examAdd;
+    private javax.swing.JButton examUpdate;
     private javax.swing.JButton examClear;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

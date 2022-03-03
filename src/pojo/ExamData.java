@@ -179,8 +179,7 @@ public class ExamData {
         try {
             List<String> lines = FileOperations.readData(Constants.EXAM_DATA);
             for(String line : lines) {
-                if(line.contains(examDatailsToUpdate.getClassName()) && line.contains(examDatailsToUpdate.getTestName()) &&
-                        line.contains(examDatailsToUpdate.getStudRollNum())){
+                if(line.contains(examDatailsToUpdate.getTestName()) && line.contains(examDatailsToUpdate.getStudRollNum())){
                     line = mapExamsModelToString(examDatailsToUpdate);
                 }
                 if(!line.contains("\r\n")){
@@ -188,7 +187,7 @@ public class ExamData {
                 }
                 FileOperations.saveData("ExamData_Temp.txt", line);
             }
-            FileOperations.renameFile(Constants.COURSE_DATA, "ExamData_Temp.txt");
+            FileOperations.renameFile(Constants.EXAM_DATA, "ExamData_Temp.txt");
         } catch (Exception ex){
             // log an exception
             System.out.println("exception while updating exams data - " + ex);

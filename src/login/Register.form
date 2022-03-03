@@ -70,12 +70,12 @@
                                   <Component id="jLabel8" min="-2" pref="53" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="CPasswords" min="-2" pref="133" max="-2" attributes="0"/>
-                                  <Component id="Passwords" min="-2" pref="133" max="-2" attributes="0"/>
-                                  <Component id="Usernames" min="-2" pref="133" max="-2" attributes="0"/>
-                                  <Component id="Names" min="-2" pref="133" max="-2" attributes="0"/>
-                                  <Component id="jComboBox1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="CPasswords" pref="133" max="32767" attributes="0"/>
+                                  <Component id="Passwords" pref="133" max="32767" attributes="0"/>
+                                  <Component id="Usernames" pref="133" max="32767" attributes="0"/>
+                                  <Component id="Names" pref="133" max="32767" attributes="0"/>
+                                  <Component id="jComboBox1" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>

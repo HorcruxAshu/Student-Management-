@@ -4,6 +4,10 @@
  */
 package examManagement;
 import login.Menu;
+import pojo.ExamData;
+
+import java.util.List;
+
 /**
  *
  * @author DM
@@ -129,6 +133,9 @@ public class examMenu extends javax.swing.JFrame {
 
     private void examViewAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_examViewAllActionPerformed
         // TODO add your handling code here:
+        List<ExamData> rows = ExamData.getAllExamsDetails();
+        ViewAllExamsDetails viewAll = new ViewAllExamsDetails(rows);
+        viewAll.setVisible(true);
     }//GEN-LAST:event_examViewAllActionPerformed
 
     private void examViewStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_examViewStudentActionPerformed

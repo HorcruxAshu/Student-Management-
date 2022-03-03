@@ -4,6 +4,13 @@
  */
 package examManagement;
 
+import pojo.ExamData;
+
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  *
  * @author DM
@@ -46,6 +53,11 @@ public class examViewByRoll extends javax.swing.JFrame {
         });
 
         jButton1.setText("Search");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +114,26 @@ public class examViewByRoll extends javax.swing.JFrame {
         em.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        //check if exam details exists for a student
+        String rollNumber = vroll.getText();
+        if(rollNumber.length() != 6) {
+            JOptionPane.showMessageDialog(this,"Please enter valid Roll Number ");
+            return;
+        }
+        List<ExamData> rows = ExamData.getAllExamsDetails().stream()
+                .filter(x -> x.getStudRollNum().equals(rollNumber))
+                .collect(Collectors.toList());
+        if(rows == null){
+            JOptionPane.showMessageDialog(this,"There is no exam details for a Student with Roll Number " + rollNumber);
+            return;
+        }
+
+        ViewAllExamsDetails viewAll = new ViewAllExamsDetails(rows);
+        viewAll.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void vrollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vrollActionPerformed
         // TODO add your handling code here:

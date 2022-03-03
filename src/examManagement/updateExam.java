@@ -17,8 +17,15 @@ public class updateExam extends javax.swing.JFrame {
     /**
      * Creates new form updateExam
      */
-    public updateExam() {
+    ExamData detailsToUpdate = new ExamData();
+    public updateExam(ExamData examsDetails) {
         initComponents();
+        detailsToUpdate =examsDetails;
+        loadExamDetails();
+    }
+
+    private void loadExamDetails(){
+        edataclass.setText(detailsToUpdate.getClassName());
     }
     boolean checkMarks(String sub1m, String sub2m, String sub3m, String sub4m, String sub5m, String sub6m, String tesId){
                    if(sub1m.isEmpty() ||sub2m.isEmpty() ||sub3m.isEmpty() ||sub4m.isEmpty() ||sub5m.isEmpty() ||sub6m.isEmpty() || tesId.isEmpty()){
@@ -580,7 +587,7 @@ public class updateExam extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new updateExam().setVisible(true);
+                new updateExam(new ExamData()).setVisible(true);
             }
         });
     }

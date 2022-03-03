@@ -4,6 +4,10 @@
  */
 package examManagement;
 
+import pojo.ExamData;
+
+import javax.swing.*;
+
 /**
  *
  * @author DM
@@ -40,6 +44,11 @@ public class examUpdateByRoll extends javax.swing.JFrame {
         jLabel2.setText("Enter Roll Number");
 
         jButton1.setText("Search");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +108,27 @@ public class examUpdateByRoll extends javax.swing.JFrame {
         em.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String rollNumber = mroll.getText();
+        if(rollNumber.length() != 6) {
+            JOptionPane.showMessageDialog(this,"Please enter valid Roll Number ");
+            return;
+        }
+        ExamData details = ExamData.getExamDetailsByRollNo(rollNumber);
+        if(details == null){
+            JOptionPane.showMessageDialog(this,"There is no exam details for a Student with Roll Number " + rollNumber);
+            return;
+        }
+
+        updateExam update  = new updateExam(details);
+        update.setVisible(true);
+        this.dispose();
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

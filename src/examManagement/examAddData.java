@@ -4,11 +4,7 @@
  */
 package examManagement;
 
-import courseManagement.CourseTask;
-import pojo.CourseData;
-import pojo.ExamData;
-import pojo.StudentData;
-
+import pojo.*;
 import javax.swing.*;
 
 /**
@@ -425,14 +421,17 @@ public class examAddData extends javax.swing.JFrame {
         StudentData data = StudentData.getStudentByRollNo(rollNumber);
         if(data == null ){
             JOptionPane.showMessageDialog(null, "Student with roll number "+ rollNumber + " does not exists");
+            clearFields();
             return;
         }
         String classStandard  = data.getClassStandard();
         CourseData courseDetails = CourseData.getCourseDetailsByName(classStandard);
         if(courseDetails == null){
             JOptionPane.showMessageDialog(null, "Subject details are not registered for class "+ classStandard);
+            clearFields();
             return;
         }
+        eroll.setText(rollNumber);
         edataclass.setText(classStandard);
         edataclass.setEditable(false);
         sub1.setText(courseDetails.getSub1());
@@ -454,9 +453,7 @@ public class examAddData extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void erollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_erollActionPerformed
-         // TODO add your handling code here: 
-        
-        loadSubjectsDataForStudent(eroll.getText());
+         // TODO add your handling code here:
 
     }//GEN-LAST:event_erollActionPerformed
 
@@ -497,7 +494,25 @@ public class examAddData extends javax.swing.JFrame {
 
     private void examAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_examAddActionPerformed
         // TODO add your handling code here:
-        
+
+        if(!(checkMarks(sub1m.getText(),sub2m.getText(),sub3m.getText(),sub4m.getText(),sub5m.getText(),sub6m.getText(),jTextField2.getText()))){
+            if(jTextField2.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Please enter Test ID!");
+                return;
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Please enter marks for all subjects!");
+                return;
+            }
+
+        }
+        String testName = jTextField2.getText();
+        String rollNumber = eroll.getText();
+        ExamData details = ExamData.getExamDetailsByRollNo(rollNumber);
+        if(details != null && details.getTestName().equals(testName)) {
+            JOptionPane.showMessageDialog(this,"Exam details for test " + testName + " and for a Student with Roll Number " + rollNumber + " already exists");
+            return;
+        }
 
         ExamData examDetails = new ExamData();
         examDetails.setStudRollNum(eroll.getText());
@@ -516,17 +531,6 @@ public class examAddData extends javax.swing.JFrame {
         examDetails.setSub6Name(sub6.getText());
         examDetails.setSub6Score(sub6m.getText());
 
-        if(!(checkMarks(sub1m.getText(),sub2m.getText(),sub3m.getText(),sub4m.getText(),sub5m.getText(),sub6m.getText(),jTextField2.getText()))){
-                       if(jTextField2.getText().isEmpty()){
-                       JOptionPane.showMessageDialog(null, "Please enter Test ID!");
-                       return;
-}else{
-          JOptionPane.showMessageDialog(null, "Please enter marks for all subjects!");
-                       return;
-
-}
-                       
-        }
         if(ExamData.add(examDetails)){
             JOptionPane.showMessageDialog(this,"Successfully added exam details.");
             examMenu ct = new examMenu();

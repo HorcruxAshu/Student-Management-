@@ -217,7 +217,8 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if(validateCredentials(tfus.getText(), tfps.getText())){
+        String pwd = String.valueOf(tfps.getPassword());
+        if(validateCredentials(tfus.getText(), pwd)){
             Menu menu = new Menu();
             menu.setVisible(true);
             clearFields();
@@ -232,7 +233,6 @@ public class login extends javax.swing.JFrame {
         Register r1 = new Register();
         r1.setVisible(true);
         this.dispose();
-//            
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -4,6 +4,7 @@ import common.Constants;
 import common.FileOperations;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LoginData {
     String name;
@@ -56,6 +57,12 @@ public class LoginData {
             System.out.println("exception while reading login data - " + ex);
         }
         return allCreds;
+    }
+
+    public static List<String> getAllRegisteredUserNames(){
+        return getAllCredentials().stream()
+                .map(LoginData::getUserName)
+                .collect(Collectors.toList());
     }
 
     public static LoginData mapLinesToLoginDataModel(String data){

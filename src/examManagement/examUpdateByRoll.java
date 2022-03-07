@@ -136,7 +136,14 @@ public class examUpdateByRoll extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Please enter valid Roll Number ");
             return;
         }
-        ExamData details = ExamData.getExamDetailsByRollNo(rollNumber);
+
+        String testName  = examTest.getText();
+        if(testName.length() == 0){
+            JOptionPane.showMessageDialog(this,"Please enter valid test name");
+            return;
+        }
+
+        ExamData details = ExamData.getExamDetailsByRollNoAndTestName(rollNumber, testName);
         if(details == null){
             JOptionPane.showMessageDialog(this,"There is no exam details for a Student with Roll Number " + rollNumber);
             return;

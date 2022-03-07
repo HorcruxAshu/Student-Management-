@@ -166,6 +166,13 @@ public class ExamData {
                 .orElse(null);
     }
 
+    public static ExamData getExamDetailsByRollNoAndTestName(String rollno, String testName){
+        return getAllExamsDetails().stream()
+                .filter(x ->x.getStudRollNum().equalsIgnoreCase(rollno) && x.getTestName().equalsIgnoreCase(testName))
+                .findFirst()
+                .orElse(null);
+    }
+
     public static boolean add(ExamData examDatails){
         String examData = mapExamsModelToString(examDatails);
 

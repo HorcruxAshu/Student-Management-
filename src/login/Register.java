@@ -264,7 +264,12 @@ public class Register extends javax.swing.JFrame {
             return;
         }
 
-// create object for register data using user inputs.
+        if(LoginData.getAllRegisteredUserNames().contains(userName)){
+            JOptionPane.showMessageDialog(null, "User already registered.");
+            return;
+        }
+
+        // create object for register data using user inputs.
         LoginData loginInfo = new LoginData();
         loginInfo.setName(name);
         loginInfo.setUserName(userName);

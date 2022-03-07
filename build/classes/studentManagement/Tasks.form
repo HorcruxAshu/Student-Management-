@@ -30,10 +30,14 @@
                   <Component id="view" max="32767" attributes="0"/>
                   <Component id="edit" max="32767" attributes="0"/>
                   <Component id="addstudent" max="32767" attributes="0"/>
-                  <Component id="jLabel1" pref="138" max="32767" attributes="0"/>
                   <Component id="jButton4" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="139" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jLabel1" min="-2" pref="319" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,7 +68,7 @@
           <Font name="Segoe UI" size="24" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Operations"/>
+        <Property name="text" type="java.lang.String" value="Student Management"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="addstudent">
@@ -77,7 +81,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="edit">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Edit"/>
+        <Property name="text" type="java.lang.String" value="Edit Student"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editActionPerformed"/>
@@ -85,7 +89,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="view">
       <Properties>
-        <Property name="text" type="java.lang.String" value="View All"/>
+        <Property name="text" type="java.lang.String" value="View All Students"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewActionPerformed"/>
@@ -93,7 +97,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Delete"/>
+        <Property name="text" type="java.lang.String" value="Delete Student Entry"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
